@@ -110,6 +110,7 @@ a {
         justify-content: space-between;
   text-decoration: none;
         margin-left: 50px;
+        align-items: center;
 }
 
 .nav li:first-child {
