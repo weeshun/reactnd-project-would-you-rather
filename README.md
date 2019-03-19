@@ -100,6 +100,10 @@ Your code will talk to the database via 4 methods:
 To run:
 
 - `$ yarn install`
+- `$ yarn add react-redux redux`
+- `$ yarn add redux-thunk`
+- `$ yarn add react-redux-loading`
+- `$ yarn add react-router-dom`
 - `$ yarn start`
 
 ## Contributing
