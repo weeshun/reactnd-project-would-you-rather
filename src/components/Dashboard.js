@@ -43,7 +43,6 @@ class Dashboard extends Component {
         <ul className='dashboard-list'>
           {Object.keys(selectedQuestions).map((id) => (
             <li key={id}>
-                              {id}
               <Question id={id}/>
             </li>
           ))}

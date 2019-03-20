@@ -5,6 +5,7 @@ import { getShorterStr } from '../utils/helpers'
 //import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti'
 //import { handleToggleTweet} from '../actions/tweets'
 //import { Link, withRouter } from 'react-router-dom'
+import QuestionPoll from './QuestionPoll.js'
 
 class Question extends Component {
   // state = {
@@ -30,6 +31,7 @@ class Question extends Component {
 
     // To do: show Info
     //this.props.history.push(`/questions/${id}`)
+    //<QuestionPoll id={id}/>
   }
 
   render() {
@@ -46,7 +48,7 @@ class Question extends Component {
     const answered =  question.optionOne.votes.includes(authedUser)
                    || question.optionTwo.votes.includes(authedUser)
     const buttonName = answered ? "VIEW POLL" : "VOTE"
-    const shortAnswer = getShorterStr(question.optionOne.text)
+    const shortAnswerSample = getShorterStr(question.optionOne.text)
 
     return (
       <div className='question'>
@@ -62,7 +64,7 @@ class Question extends Component {
             />
           </span>
           <h5>Would you rather</h5>
-          <div className='short-sample-answer'>...{shortAnswer}...</div>
+          <div className='short-sample-answer'>...{shortAnswerSample}...</div>
           <button className='btn' onClick={(e) => this.showInfo(e, id)}>
             {buttonName}
           </button>

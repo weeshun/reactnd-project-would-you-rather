@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
 
-class ViewPoll extends Component {
-  {/*
+class QuestionPoll extends Component {
+  /*
     <Question id={id} />
     <NewQuestion id={id} />
     {replies.length !== 0 && <h3 className='center'>Replies</h3>}
@@ -14,12 +13,13 @@ class ViewPoll extends Component {
         </li>
       ))}
     </ul>
-  */}
+  */
+  
   render() {
-    const { id, replies } = this.props  // mapStateToProps retuns { id, replies }
+    //const { id, replies } = this.props  // mapStateToProps retuns { id, replies }
     return (
       <div>
-        ViewPoll
+        PollInfo
       </div>
     )
   }
@@ -39,4 +39,4 @@ class ViewPoll extends Component {
 // }
 //
 // export default connect(mapStateToProps)(ViewPoll)
-export default connect()(ViewPoll)
+export default connect()(QuestionPoll)
