@@ -6,6 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+            /* width: 70%;
+            max-width: 960px; */
 }
 
 code {
@@ -107,9 +109,10 @@ a {
   display: flex;
   flex-direction: row;
   /*justify-content: flex-start;*/
-        justify-content: space-between;
+        justify-content: space-around;
+        /* justify-content: center; */
   text-decoration: none;
-        margin-left: 50px;
+        /* margin-left: 50px; */
         align-items: center;
 }
 
@@ -128,7 +131,7 @@ a {
 
 .nav li:last-child {
         /*margin-right: auto;*/
-        margin-right: 50px;
+        /* margin-right: 50px; */
 }
 
 .nav :tinyavatar {
@@ -136,6 +139,31 @@ a {
   /*border-radius: 25px;*/
         margin: 5px;
 }
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
 
 ul {
   padding-left: 0;

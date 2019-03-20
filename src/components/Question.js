@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 //import { formatTweet, formatDate } from '../utils/helpers'
-import { getMaxThreeWords } from '../utils/helpers'
+import { getShorterStr } from '../utils/helpers'
 //import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti'
 //import { handleToggleTweet} from '../actions/tweets'
 //import { Link, withRouter } from 'react-router-dom'
@@ -45,8 +45,8 @@ class Question extends Component {
     //const answered = Object.keys(user.answers).includes(question.id)
     const answered =  question.optionOne.votes.includes(authedUser)
                    || question.optionTwo.votes.includes(authedUser)
-    const AU = answered ? "Yes" : "No"
-    const shortAnswer = getMaxThreeWords(question.optionOne.text)
+    const buttonName = answered ? "VIEW POLL" : "VOTE"
+    const shortAnswer = getShorterStr(question.optionOne.text)
 
     return (
       <div className='question'>
@@ -61,11 +61,10 @@ class Question extends Component {
               className='avatar'
             />
           </span>
-          <p>Answered: {AU}</p>
           <h5>Would you rather</h5>
           <div className='short-sample-answer'>...{shortAnswer}...</div>
           <button className='btn' onClick={(e) => this.showInfo(e, id)}>
-            View Poll
+            {buttonName}
           </button>
         </div>
       </div>
