@@ -10,7 +10,6 @@ class Dashboard extends Component {
   setQuestionType (e) {
     e.preventDefault()
     const showAnswered = (e.target.value === "answered") ? true : false
-    //console.log("New value: ", showAnswered)
     this.setState(() => ({
       showAnswered: showAnswered
     }))
@@ -20,23 +19,26 @@ class Dashboard extends Component {
     const selectedQuestions = this.state.showAnswered
                             ? this.props.answered
                             : this.props.unanswered
+
     return (
       <div>
-        <div className="tab">
+        <div className='tab'>
           <button type='button'
-            value="unanswered"
+            value='unanswered'
             disabled={this.state.showAnswered === false}
             onClick={(e) => this.setQuestionType(e)}>
               Unanswered
           </button>
 
           <button type='button'
-            value="answered"
+            value='answered'
             disabled={this.state.showAnswered === true}
             onClick={(e) => this.setQuestionType(e)}>
-            Answered
+              Answered
           </button>
         </div>
+
+        <h6>{this.state.showAnswered ? "Answered" : "Unanswered"} Questions</h6>
 
         <ul className='dashboard-list'>
           {Object.keys(selectedQuestions).map((id) => (
@@ -52,23 +54,24 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps ({ authedUser, users, questions }) {
-  // const user = users[authedUser]
-  // console.log('users[authedUser]: ', users[authedUser])
   let answered = {}
   let unanswered = {}
 
   if (typeof users[authedUser] !== 'undefined') {
     const answeredIDs = Object.keys(users[authedUser].answers)
-    const unansweredIDs = Object.keys(questions).filter((id) => !answeredIDs.includes(id))
+    const unansweredIDs = Object.keys(questions).filter((id) => (
+      !answeredIDs.includes(id)
+    ))
 
     answeredIDs.forEach((id) => (answered[id] = questions[id]))
     unansweredIDs.forEach((id) => (unanswered[id] = questions[id]))
 
-    Object.keys(answered).sort((a, b) => answered[b].timestamp - answered[a].timestamp)
-    Object.keys(unanswered).sort((a, b) => unanswered[b].timestamp - unanswered[a].timestamp)
-
-    // console.log("answered: ", answered)
-    // console.log("unanswered: ", unanswered)
+    Object.keys(answered).sort((a, b) => (
+      answered[b].timestamp - answered[a].timestamp
+    ))
+    Object.keys(unanswered).sort((a, b) => (
+      unanswered[b].timestamp - unanswered[a].timestamp
+    ))
   }
 
   return {
