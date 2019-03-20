@@ -13,19 +13,13 @@ class AddQuestion extends Component {
   handleChange = (e) => {
     e.preventDefault()
 
-    if (e.target.name === 'optionOneText') {
-      const optionOneText = e.target.value
-      this.setState((prevState) => ({
-        ...prevState,
-        optionOneText: optionOneText
-      }))
-    } else {
-      const optionTwoText = e.target.value
-      this.setState((prevState) => ({
-        ...prevState,
-        optionTwoText: optionTwoText
-      }))
-    }
+    const optionText = e.target.value
+    const optionName = e.target.name
+    
+    this.setState((prevState) => ({
+      ...prevState,
+      [optionName]: optionText
+    }))
   }
 
   handleSubmit = (e) => {
