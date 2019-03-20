@@ -96,8 +96,9 @@ a {
 }
 
     .input {
-      max-width: 800px;
-      margin: 0 auto;
+      /* max-width: 800px; */
+      width: 50%;
+      margin-left: 30 auto;
       padding: 10px;
     }
 
@@ -120,6 +121,8 @@ a {
   text-decoration: none;
         /* margin-left: 50px; */
         align-items: center;
+        /* background-color: coral; */
+        /* background-color: gray; */
 }
 
 .nav li:first-child {
@@ -207,6 +210,13 @@ li {
       border: 1px solid #dad7d7;
       border-radius: 3px;
       cursor: pointer;
+}
+
+.question-length {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 20px;
+  color: #C3392A;
 }
 
 .question1 {

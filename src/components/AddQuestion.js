@@ -7,23 +7,25 @@ class AddQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
-    toHome: false  // whether to go to the home ('/') view
+    toHome: false
   }
 
-  handleChangeOne = (e) => {
-    const optionOneText = e.target.value
+  handleChange = (e) => {
+    e.preventDefault()
 
-    this.setState(() => ({
-      optionOneText: optionOneText
-    }))
-  }
-
-  handleChangeTwo = (e) => {
-    const optionTwoText = e.target.value
-
-    this.setState(() => ({
-      optionTwoText: optionTwoText
-    }))
+    if (e.target.name === 'optionOneText') {
+      const optionOneText = e.target.value
+      this.setState((prevState) => ({
+        ...prevState,
+        optionOneText: optionOneText
+      }))
+    } else {
+      const optionTwoText = e.target.value
+      this.setState((prevState) => ({
+        ...prevState,
+        optionTwoText: optionTwoText
+      }))
+    }
   }
 
   handleSubmit = (e) => {
@@ -51,22 +53,15 @@ class AddQuestion extends Component {
     const optionOneTextLeft = 280 - optionOneText.length
     const optionTwoTextLeft = 280 - optionTwoText.length
 
-    // <textarea
-    //   value={text}
-    //   onChange={this.handleChange}
-    //   className='textarea'
-    //   maxLength={280}
-    // />
-
-    // <input>: single line text
+    // onChange={(e) => this.handleChange(e)}
 
     return (
-      <div>
+      <div className='container'>
         <h3 className='center'>Create New Question</h3>
 
         <form className='new-question' onSubmit={this.handleSubmit}>
 
-          <h5 className='center'>Complete the question</h5>
+          <h4>Complete the question</h4>
 
           <p>Would you rather...</p>
 
@@ -74,16 +69,9 @@ class AddQuestion extends Component {
             <input type='text'
               value={optionOneText}
               name='optionOneText'
-              onChange={this.handleChangeOne}
+              onChange={this.handleChange}
               className='input'
-              maxLength={280}
             />
-
-            {optionOneTextLeft <= 100 && (
-              <div className='question-length'>
-                {optionOneTextLeft}
-              </div>
-            )}
           </div>
 
           <p>OR</p>
@@ -92,20 +80,12 @@ class AddQuestion extends Component {
             <input type='text'
               value={optionTwoText}
               name='optionTwoText'
-              onChange={this.handleChangeTwo}
+              onChange={this.handleChange}
               className='input'
-              maxLength={280}
             />
-
-            {optionTwoTextLeft <= 100 && (
-              <div className='question-length'>
-                {optionTwoTextLeft}
-              </div>
-            )}
           </div>
 
-          <button
-            className='btn'
+          <button className='btn'
             type='submit'
             disabled={optionOneText === '' || optionTwoText === ''}>
               Submit

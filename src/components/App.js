@@ -14,7 +14,7 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
   // <Route path='/questions/:id' component={QuestionPoll} />
-  // <Route path='/add' component={AddQuestion} />
+  // <div className="container"> instead of <div className="App-header">
 
   render() {
     {/*
@@ -28,13 +28,13 @@ class App extends Component {
             <Nav name="Tyler McGinnis" avatarURL='https://avatars.io/twitter/tylermcginnis'/>
             {this.props.loading === true
               ? null
-              : <div className="App-header">
-                { /*
-                  <img src={logo} className="App-logo" alt="logo" />
-                */ }
-                <Route path='/' exact component={Dashboard} />
-                <Route path='/add' component={AddQuestion} />
-              </div>
+              : <div>
+                  { /*
+                    <img src={logo} className="App-logo" alt="logo" />
+                  */ }
+                  <Route path='/' exact component={Dashboard} />
+                  <Route path='/add' component={AddQuestion} />
+                </div>
             }
           </div>
         </Fragment>
