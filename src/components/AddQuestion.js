@@ -15,7 +15,7 @@ class AddQuestion extends Component {
 
     const optionText = e.target.value
     const optionName = e.target.name
-    
+
     this.setState((prevState) => ({
       ...prevState,
       [optionName]: optionText

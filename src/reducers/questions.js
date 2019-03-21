@@ -8,6 +8,12 @@ export default function questions (state = {}, action) {
         ...action.questions
       }
 
+    case ADD_QUESTION :
+      return {
+        ...state,
+        [action.question.id]: action.question
+      }
+
     default :
       return state
   }
