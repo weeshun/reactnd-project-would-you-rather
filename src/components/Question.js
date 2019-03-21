@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { getShorterStr } from '../utils/helpers'
 //import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti'
 //import { handleToggleTweet} from '../actions/tweets'
-//import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+  //import { Redirect } from 'react-router-dom'
 import QuestionPoll from './QuestionPoll.js'
 
 class Question extends Component {
@@ -29,8 +30,8 @@ class Question extends Component {
   showInfo = (e, id) => {
     e.preventDefault()
 
-    // To do: show Info
-    //this.props.history.push(`/questions/${id}`)
+    this.props.history.push(`/questions/${id}`)
+    //<Redirect to="/questions/{id}" />
     //<QuestionPoll id={id}/>
   }
 
@@ -65,8 +66,9 @@ class Question extends Component {
           </span>
           <h5>Would you rather</h5>
           <div className='short-sample-answer'>...{shortAnswerSample}...</div>
-          <button className='btn' onClick={(e) => this.showInfo(e, id)}>
-            {buttonName}
+          <button className='btn'
+            onClick={(e) => this.showInfo(e, id)}>
+              {buttonName}
           </button>
         </div>
       </div>
@@ -114,5 +116,5 @@ function mapStateToProps({authedUser, users, questions}, { id }) {
   }
 }
 
-// export default withRouter(connect(mapStateToProps)(Question))
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))
+//export default connect(mapStateToProps)(Question)

@@ -44,11 +44,6 @@ class AddQuestion extends Component {
       return <Redirect to='/' />
     }
 
-    const optionOneTextLeft = 280 - optionOneText.length
-    const optionTwoTextLeft = 280 - optionTwoText.length
-
-    // onChange={(e) => this.handleChange(e)}
-
     return (
       <div className='container'>
         <h3 className='center'>Create New Question</h3>

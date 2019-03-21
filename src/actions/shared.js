@@ -1,4 +1,4 @@
-import { getInitialData, saveQuestion } from '../utils/api'
+import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
 import { setAuthedUser } from './authedUser'
@@ -24,7 +24,7 @@ export function handleInitialData () {
   }
 }
 
-export function addQuestion (question) {
+function addQuestion (question) {
   return {
     type: ADD_QUESTION,
     question   // formattedQuestion
@@ -36,17 +36,40 @@ export function handleAddQuestion (optionOneText, optionTwoText) {
     const { authedUser } = getState()
 
     dispatch(showLoading())
-    {/*
-
-    */}
 
     return saveQuestion({    // { optionOneText, optionTwoText, author }
       optionOneText,
       optionTwoText,
       author: authedUser
     })
-      .then((question) => {  // actually, formattedQuestion
+      .then((question) => {  // actually, formattedQuestion (see _saveQuestion)
         dispatch(addQuestion(question))
+      })
+      .then(() => dispatch(hideLoading()))
+  }
+}
+
+function answerQuestion (qid, answer) {
+  return {
+    type: ANSWER_QUESTION,
+    qid,               // question id
+    answer             // optionOne or optionTwo
+  }
+}
+
+export function handleAnswerQuestion (qid, answer) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
+    dispatch(showLoading())
+
+    return saveQuestionAnswer({    // { optionOneText, optionTwoText, author }
+      authedUser,
+      qid,
+      answer
+    })
+      .then(() => {  // actually, formattedQuestion (see _saveQuestion)
+        dispatch(answerQuestion(qid, answer))
       })
       .then(() => dispatch(hideLoading()))
   }

@@ -1,14 +1,19 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
-//import QuestionPoll from './QuestionPoll'
+import QuestionPoll from './QuestionPoll'
 import AddQuestion from './AddQuestion'
 import LeaderBoard from './LeaderBoard'
+// import NoMatch from './NoMatch'
 import logo from '../logo.svg';
+
+function NoMatch() {
+  return <h2>404: No Match</h2>
+}
 
 class App extends Component {
   componentDidMount() {
@@ -33,12 +38,13 @@ class App extends Component {
                   { /*
                     <img src={logo} className="App-logo" alt="logo" />
                   */ }
-                  <Route path='/' exact component={Dashboard} />
-                  {/*
-                  <Route path='/questions/:id' component={QuestionPoll} />
-                  */}
-                  <Route path='/add' component={AddQuestion} />
-                  <Route path='/leaderboard' component={LeaderBoard} />
+                  <Switch>
+                    <Route path='/' exact component={Dashboard} />
+                    <Route path='/questions/:id' exact component={QuestionPoll} />
+                    <Route path='/add' component={AddQuestion} />
+                    <Route path='/leaderboard' component={LeaderBoard} />
+                    <Route component={NoMatch} />
+                  </Switch>
                 </div>
             }
           </div>
