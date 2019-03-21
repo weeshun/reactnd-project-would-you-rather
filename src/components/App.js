@@ -7,13 +7,14 @@ import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 //import QuestionPoll from './QuestionPoll'
 import AddQuestion from './AddQuestion'
+import LeaderBoard from './LeaderBoard'
 import logo from '../logo.svg';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
-  // <Route path='/questions/:id' component={QuestionPoll} />
+
   // <div className="container"> instead of <div className="App-header">
 
   render() {
@@ -33,7 +34,11 @@ class App extends Component {
                     <img src={logo} className="App-logo" alt="logo" />
                   */ }
                   <Route path='/' exact component={Dashboard} />
+                  {/*
+                  <Route path='/questions/:id' component={QuestionPoll} />
+                  */}
                   <Route path='/add' component={AddQuestion} />
+                  <Route path='/leaderboard' component={LeaderBoard} />
                 </div>
             }
           </div>
