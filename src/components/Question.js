@@ -5,7 +5,7 @@ import { getShorterStr } from '../utils/helpers'
 //import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti'
 //import { handleToggleTweet} from '../actions/tweets'
 import { withRouter } from 'react-router-dom'
-  //import { Redirect } from 'react-router-dom'
+  // import { Redirect } from 'react-router-dom'
 import QuestionPoll from './QuestionPoll.js'
 
 class Question extends Component {
@@ -32,6 +32,7 @@ class Question extends Component {
 
     this.props.history.push(`/questions/${id}`)
     //<Redirect to="/questions/{id}" />
+    // <Redirect to=`/questions/${id}` />
     //<QuestionPoll id={id}/>
   }
 
@@ -117,4 +118,4 @@ function mapStateToProps({authedUser, users, questions}, { id }) {
 }
 
 export default withRouter(connect(mapStateToProps)(Question))
-//export default connect(mapStateToProps)(Question)
+// export default connect(mapStateToProps)(Question)
