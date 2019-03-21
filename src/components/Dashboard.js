@@ -57,20 +57,16 @@ function mapStateToProps ({ authedUser, users, questions }) {
   let unanswered = {}
 
   if (typeof users[authedUser] !== 'undefined') {
+
     const answeredIDs = Object.keys(users[authedUser].answers)
-    const unansweredIDs = Object.keys(questions).filter((id) => (
-      !answeredIDs.includes(id)
-    ))
+      .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    const unansweredIDs = Object.keys(questions)
+      .filter((id) => !answeredIDs.includes(id))
+      .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
 
     answeredIDs.forEach((id) => (answered[id] = questions[id]))
     unansweredIDs.forEach((id) => (unanswered[id] = questions[id]))
-
-    Object.keys(answered).sort((a, b) => (
-      answered[b].timestamp - answered[a].timestamp
-    ))
-    Object.keys(unanswered).sort((a, b) => (
-      unanswered[b].timestamp - unanswered[a].timestamp
-    ))
+    
   }
 
   return {

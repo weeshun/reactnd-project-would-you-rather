@@ -13,6 +13,7 @@ class LeaderBoard extends Component {
               {users[id].name}:
               {users[id].questions.length} questions
               {Object.keys(users[id].answers).length} answers
+              Score: {users[id].questions.length + Object.keys(users[id].answers).length}
             </li>
           ))}
         </ul>
