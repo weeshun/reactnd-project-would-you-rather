@@ -30,6 +30,8 @@ class SignIn extends Component {
     //   console.log(userNames[i])
     // }
     //{userNames.map((n) => (<option>{n}</option>)}
+    //
+    // <img src={users[id].avatarURL} className='verytinyavatar' />
     return (
       <div>
         <h1>Welcome to the Would You Rather App</h1>
@@ -41,7 +43,9 @@ class SignIn extends Component {
         <select className='dashboard-list' onChange={this.handleChange}>
           <option value='select'>Select Your Account</option>
           {userIDs.map((id) => (
-            <option value={id} key={id} defaultChecked={false}>`url({users[id].avatarURL})`: {users[id].name}</option>
+            <option value={id} key={id} defaultChecked={false}>
+              {users[id].name}
+            </option>
           ))}
         </select>
 

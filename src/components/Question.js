@@ -58,7 +58,7 @@ class Question extends Component {
         <div className='question-info'>
           <span>
             <img
-              src={`{user.avatarURL}`}
+              src={user.avatarURL}
               alt={`Avatar of ${user.name}`}
               className='avatar'
             />

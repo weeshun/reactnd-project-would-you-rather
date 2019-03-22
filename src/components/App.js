@@ -18,6 +18,9 @@ function NoMatch() {
   return <h2>404: Page Not Found</h2>
 }
 
+// progress-bar
+// https://medium.com/@ItsMeDannyZ/how-to-build-a-progress-bar-with-react-8c5e79731d1f
+
 class App extends Component {
   //const { dispatch } = this.props
   componentDidMount() {
@@ -54,7 +57,7 @@ class App extends Component {
               : <div className="container">
                   <Nav
                     name={this.props.authedUserName}
-                    avatarURL='url({this.props.authedUserAvatarURL})'/>
+                    avatarURL={this.props.authedUserAvatarURL}/>
                   <div>
                     { /*
                       <img src={logo} className="App-logo" alt="logo" />

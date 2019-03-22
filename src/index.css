@@ -149,6 +149,18 @@ a {
         margin: 5px;
 }
 
+.tinyavatar {
+        width: 30px;
+  /*border-radius: 25px;*/
+        margin: 0px;
+}
+
+.verytinyavatar {
+        width: 15px;
+  /*border-radius: 25px;*/
+        margin: 0px;
+}
+
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
