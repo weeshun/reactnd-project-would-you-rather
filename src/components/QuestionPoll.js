@@ -2,30 +2,28 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class QuestionPoll extends Component {
-  state = {
-    selectedOption: 'optionOne'
-  }
-
-  handleChange = (e) => {
-    e.preventDefault()
-
-    this.setState({
-      selectedOption: e.target.value
-    })
-  }
+  // state = {
+  //   selectedOption: 'optionOne'
+  // }
+  //
+  // handleChange = (e) => {
+  //   e.preventDefault()
+  //
+  //   this.setState({
+  //     selectedOption: e.target.value
+  //   })
+  // }
 
   handleSubmit = (e) => {
     e.preventDefault()
 
-    // To do: handle submit
+    // A method found accidentally!
+    const selectedOption = this.input.checked ? 'optionOne' : 'optionTwo'
     console.log("**********")
-    console.log("*** this.state.selectedOption ***", this.state.selectedOption)
-    // const option = this.input.value
-    // const option = e.target.value
-    // console.log("*** OPTION ***", option)
-    // console.log("*** this.inputOne.value ***", this.inputOne.value)
-    // console.log("*** this.inputTwo.value ***", this.inputTwo.value)
-    //
+    console.log("this.input.value: ", this.input.checked)
+    //console.log("this.optionTwo.value: ", this.optionTwo.checked)
+    console.log("selectedOption: ", selectedOption)
+
     // const { optionOneText, optionTwoText } = this.state
     // const { dispatch } = this.props
     //
@@ -48,7 +46,7 @@ class QuestionPoll extends Component {
     return (
       <div>
         <p>Asked by {name}</p>
-        
+
         <p>Results:</p>
         <p>{avatarURL}</p>
         <ul>
@@ -72,6 +70,13 @@ class QuestionPoll extends Component {
   }
 
   showUnanswered (name, avatarURL, question) {
+    //checked={this.state.selectedOption === 'optionOne'}
+    //checked={this.state.selectedOption === 'optionTwo'}
+    //onChange={this.handleChange}
+    //value='optionOne'
+    //value='optionTwo'
+    //ref={(input) => this.optionTwo = input}
+
     return (
       <div className='container'>
         <h5>{name} asks</h5>
@@ -83,9 +88,9 @@ class QuestionPoll extends Component {
           <div>
             <label>
               <input type='radio'
-                value='optionOne'
-                checked={this.state.selectedOption === 'optionOne'}
-                onChange={this.handleChange}
+                name='questionPoll'
+                checked={true}
+                ref={(input) => this.input = input}
               />
               {question.optionOne.text}
             </label>
@@ -94,9 +99,7 @@ class QuestionPoll extends Component {
           <div className='radio'>
             <label>
               <input type='radio'
-                value='optionTwo'
-                checked={this.state.selectedOption === 'optionTwo'}
-                onChange={this.handleChange}
+                name='questionPoll'
               />
               {question.optionTwo.text}
             </label>
