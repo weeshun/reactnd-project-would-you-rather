@@ -49,27 +49,30 @@ export function handleAddQuestion (optionOneText, optionTwoText) {
   }
 }
 
-function answerQuestion (qid, answer) {
+function answerQuestion (qid, authedUser, answer) {
   return {
     type: ANSWER_QUESTION,
     qid,               // question id
+    authedUser,        // authedUser
     answer             // optionOne or optionTwo
   }
 }
 
 export function handleAnswerQuestion (qid, answer) {
+  console.log("*** qid: ", qid)
+  console.log("*** answer: ", answer)
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
     dispatch(showLoading())
 
-    return saveQuestionAnswer({    // { optionOneText, optionTwoText, author }
+    return saveQuestionAnswer({
       authedUser,
       qid,
       answer
     })
-      .then(() => {  // actually, formattedQuestion (see _saveQuestion)
-        dispatch(answerQuestion(qid, answer))
+      .then(() => {
+        dispatch(answerQuestion(qid, authedUser, answer))
       })
       .then(() => dispatch(hideLoading()))
   }

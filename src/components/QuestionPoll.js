@@ -1,28 +1,25 @@
 import React, { Component } from 'react'
+import { handleAnswerQuestion } from '../actions/shared'
 import { connect } from 'react-redux'
 
 class QuestionPoll extends Component {
-  // state = {
-  //   selectedOption: 'optionOne'
-  // }
-  //
-  // handleChange = (e) => {
-  //   e.preventDefault()
-  //
-  //   this.setState({
-  //     selectedOption: e.target.value
-  //   })
-  // }
-
   handleSubmit = (e) => {
     e.preventDefault()
 
+    const { dispatch, authedUser, id, answered, name, avatarURL, question } = this.props
+
+    console.log("this.props: ", this.props)
+    console.log("answer: ", answer)
+
     // A method found accidentally!
-    const selectedOption = this.input.checked ? 'optionOne' : 'optionTwo'
+    const answer = this.input.checked ? 'optionOne' : 'optionTwo'
     console.log("**********")
     console.log("this.input.value: ", this.input.checked)
-    //console.log("this.optionTwo.value: ", this.optionTwo.checked)
-    console.log("selectedOption: ", selectedOption)
+    console.log("id: ", id)
+    console.log("answer: ", answer)
+
+
+    dispatch(handleAnswerQuestion(id, answer))
 
     // const { optionOneText, optionTwoText } = this.state
     // const { dispatch } = this.props
@@ -76,7 +73,6 @@ class QuestionPoll extends Component {
     //value='optionOne'
     //value='optionTwo'
     //ref={(input) => this.optionTwo = input}
-
     return (
       <div className='container'>
         <h5>{name} asks</h5>
