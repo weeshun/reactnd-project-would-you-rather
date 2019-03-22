@@ -18,8 +18,10 @@ class QuestionPoll extends Component {
     const totalVotes = question.optionOne.votes.length
                      + question.optionTwo.votes.length
 
-    const percentOne = question.optionOne.votes.length * 100. / totalVotes
-    const percentTwo = question.optionTwo.votes.length * 100. / totalVotes
+    const percentOne = (question.optionOne.votes.length * 100. / totalVotes)
+                     .toFixed(1)
+    const percentTwo = (question.optionTwo.votes.length * 100. / totalVotes)
+                     .toFixed(1)
 
     return (
       <div>

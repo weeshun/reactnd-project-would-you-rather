@@ -44,6 +44,8 @@ class SignIn extends Component {
             <option value={id} key={id} defaultChecked={false}>`url({users[id].avatarURL})`: {users[id].name}</option>
           ))}
         </select>
+
+        <h2>SIGN UP</h2>
       </div>
     )
   }

@@ -18,11 +18,6 @@ function NoMatch() {
   return <h2>404: Page Not Found</h2>
 }
 
-// function SignOut () {
-//   console.log("*** SIGNOUT ***")
-//   return <h2>SIGNOUT</h2>
-// }
-
 class App extends Component {
   //const { dispatch } = this.props
   componentDidMount() {
@@ -94,8 +89,9 @@ function mapStateToProps ({ authedUser, users }) {
     authedUserName = users[authedUser].name
     authedUserAvatarURL = users[authedUser].avatarURL
   }
+  // loading: users === null,
   return {
-    loading: users === null,
+    loading: authedUser === null,
     authedUser,
     authedUserName,
     authedUserAvatarURL
