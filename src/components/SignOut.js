@@ -5,8 +5,10 @@ import { unsetAuthedUser } from '../actions/authedUser'
 
 class SignOut extends Component {
   componentDidMount() {
+    console.log("*** Mounting SignOut ***")
     this.props.dispatch(unsetAuthedUser())
-    this.props.history.push(`/login`)
+    // this.props.history.push('/login')
+    // this.props.history.push('/')
   }
 
   render() {
@@ -19,7 +21,9 @@ class SignOut extends Component {
     //   console.log(userNames[i])
     // }
     //{userNames.map((n) => (<option>{n}</option>)}
-    return null
+    // return null
+    console.log("*** leaving SignOut ***")
+    return <Redirect to='/' />
   }
 }
 
@@ -30,6 +34,6 @@ function mapStateToProps ({ authedUser }) {
 }
 
 // export default connect(mapStateToProps)(SignOut)
-// export default connect()(SignOut)
+export default connect()(SignOut)
 // export default withRouter(connect(mapStateToProps)(SignOut))
-export default withRouter(connect()(SignOut))
+// export default withRouter(connect()(SignOut))

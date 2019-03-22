@@ -45,6 +45,8 @@ class App extends Component {
     console.log("authedUser: ", this.props.authedUser)
 
     // <Route path='/logout' component={this.signOut} />
+    // ? <Route path='/login' component={SignIn} />
+    // <Route path='/login' component={SignIn} />
 
     return (
       <BrowserRouter>
@@ -52,8 +54,8 @@ class App extends Component {
           <LoadingBar />
           {this.props.loading === true
             ? null
-            : (typeof this.props.authedUser === '')
-              ? <Route path='/login' component={SignIn} />
+            : (this.props.authedUser === '')
+              ? <SignIn />
               : <div className="container">
                   <Nav
                     name={this.props.authedUserName}
@@ -67,7 +69,6 @@ class App extends Component {
                       <Route path='/questions/:id' exact component={QuestionPoll} />
                       <Route path='/add' component={AddQuestion} />
                       <Route path='/leaderboard' component={LeaderBoard} />
-                      <Route path='/login' component={SignIn} />
                       <Route path='/logout' component={SignOut} />
                       <Route component={NoMatch} />
                     </Switch>
