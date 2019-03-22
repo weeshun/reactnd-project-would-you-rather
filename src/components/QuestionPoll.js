@@ -8,10 +8,7 @@ class QuestionPoll extends Component {
 
     const { dispatch, authedUser, id, answered, name, avatarURL, question } = this.props
 
-    console.log("this.props: ", this.props)
-    console.log("answer: ", answer)
-
-    // A method found accidentally!
+    // A method (.checked property) found accidentally!
     const answer = this.input.checked ? 'optionOne' : 'optionTwo'
 
     dispatch(handleAnswerQuestion(id, answer))
@@ -63,7 +60,7 @@ class QuestionPoll extends Component {
             <label>
               <input type='radio'
                 name='questionPoll'
-                checked={true}
+                defaultChecked
                 ref={(input) => this.input = input}
               />
               {question.optionOne.text}

@@ -2,22 +2,37 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import { handleUnsetAuthedUser } from '../actions/authedUser'
 import Dashboard from './Dashboard'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 import QuestionPoll from './QuestionPoll'
 import AddQuestion from './AddQuestion'
 import LeaderBoard from './LeaderBoard'
+import SignIn from './SignIn'
+import SignOut from './SignOut'
 // import NoMatch from './NoMatch'
 import logo from '../logo.svg';
 
 function NoMatch() {
-  return <h2>404: No Match</h2>
+  return <h2>404: Page Not Found</h2>
 }
 
+// function SignOut () {
+//   console.log("*** SIGNOUT ***")
+//   return <h2>SIGNOUT</h2>
+// }
+
 class App extends Component {
+  //const { dispatch } = this.props
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+  }
+
+  signOut () {
+    console.log("*** signout ***")
+    handleUnsetAuthedUser()
+    return null
   }
 
   // <div className="container"> instead of <div className="App-header">
@@ -26,37 +41,63 @@ class App extends Component {
     {/*
       <Nav name="John Doe" avatarURL='https://avatars.io/twitter/johndoe'/>
     */}
+    console.log("*** APP ***")
+    console.log("authedUser: ", this.props.authedUser)
+
+    // <Route path='/logout' component={this.signOut} />
+
     return (
       <BrowserRouter>
         <Fragment>
           <LoadingBar />
-          <div className="container">
-            <Nav name="Tyler McGinnis" avatarURL='https://avatars.io/twitter/tylermcginnis'/>
-            {this.props.loading === true
-              ? null
-              : <div>
-                  { /*
-                    <img src={logo} className="App-logo" alt="logo" />
-                  */ }
-                  <Switch>
-                    <Route path='/' exact component={Dashboard} />
-                    <Route path='/questions/:id' exact component={QuestionPoll} />
-                    <Route path='/add' component={AddQuestion} />
-                    <Route path='/leaderboard' component={LeaderBoard} />
-                    <Route component={NoMatch} />
-                  </Switch>
+          {this.props.loading === true
+            ? null
+            : (typeof this.props.authedUser === '')
+              ? <Route path='/login' component={SignIn} />
+              : <div className="container">
+                  <Nav
+                    name={this.props.authedUserName}
+                    avatarURL='url({this.props.authedUserAvatarURL})'/>
+                  <div>
+                    { /*
+                      <img src={logo} className="App-logo" alt="logo" />
+                    */ }
+                    <Switch>
+                      <Route path='/' exact component={Dashboard} />
+                      <Route path='/questions/:id' exact component={QuestionPoll} />
+                      <Route path='/add' component={AddQuestion} />
+                      <Route path='/leaderboard' component={LeaderBoard} />
+                      <Route path='/login' component={SignIn} />
+                      <Route path='/logout' component={SignOut} />
+                      <Route component={NoMatch} />
+                    </Switch>
+                  </div>
                 </div>
-            }
-          </div>
+          }
         </Fragment>
       </BrowserRouter>
     );
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+// function mapStateToProps ({ authedUser }) {
+//   return {
+//     loading: authedUser === null
+//   }
+// }
+
+function mapStateToProps ({ authedUser, users }) {
+  let authedUserName = ''
+  let authedUserAvatarURL = ''
+  if (authedUser !== null && authedUser !== '') {
+    authedUserName = users[authedUser].name
+    authedUserAvatarURL = users[authedUser].avatarURL
+  }
   return {
-    loading: authedUser === null
+    loading: users === null,
+    authedUser,
+    authedUserName,
+    authedUserAvatarURL
   }
 }
 

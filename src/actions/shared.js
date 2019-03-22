@@ -8,7 +8,8 @@ export const ADD_QUESTION = 'ADD_QUESTION'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
 
 //const AUTHED_ID = 'johndoe'
-const AUTHED_ID = 'tylermcginnis'
+// const AUTHED_ID = 'tylermcginnis'
+const AUTHED_ID = ''
 
 export function handleInitialData () {
   return (dispatch) => {

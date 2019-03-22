@@ -26,16 +26,18 @@ export default function Nav ({name, avatarURL}) {
         </li>
         <li>
            <img
-             src={`{avatarURL}`}
+             src={`url(${avatarURL})`}
              alt={`Avatar of ${name}`}
              className='tinyavatar'
            />
         </li>
         <li>
-          <NavLink to='/login' activeClassName='active'>
+          <NavLink to='/logout' activeClassName='active'>
             Logout
           </NavLink>
         </li>
+
+
       </ul>
     </nav>
   )
