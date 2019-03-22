@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class QuestionPoll extends Component {
+  state = {
+    selectedOption: 'optionOne'
+  }
   /*
     <Question id={id} />
     <NewQuestion id={id} />
@@ -14,31 +17,136 @@ class QuestionPoll extends Component {
       ))}
     </ul>
   */
+
+  handleChange = (e) => {
+    e.preventDefault()
+
+    // const optionText = e.target.value
+    // const optionName = e.target.name
+
+    this.setState({
+      selectedOption: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    // To do: handle submit
+    console.log("**********")
+    console.log("*** this.state.selectedOption ***", this.state.selectedOption)
+    // const option = this.input.value
+    // const option = e.target.value
+    // console.log("*** OPTION ***", option)
+    // console.log("*** this.inputOne.value ***", this.inputOne.value)
+    // console.log("*** this.inputTwo.value ***", this.inputTwo.value)
+    //
+    // const { optionOneText, optionTwoText } = this.state
+    // const { dispatch } = this.props
+    //
+    // dispatch(handleAddQuestion(optionOneText, optionTwoText))
+    //
+    // this.setState(() => ({
+    //   optionOneText: '',
+    //   optionTwoText: '',
+    //   toHome: true
+    // }))
+  }
+
   showAnswered (answer, name, question) {
     const totalVotes = question.optionOne.votes.length
                      + question.optionTwo.votes.length
+
     const percentOne = question.optionOne.votes.length * 100. / totalVotes
     const percentTwo = question.optionTwo.votes.length * 100. / totalVotes
+
     return (
       <div>
-        <p>Asked by: {name}</p>
-        <p>Results</p>
-        <p>optionOne text: {question.optionOne.text}</p>
-        <p>optionOne votes: {question.optionOne.votes.length} out of {totalVotes} votes or {percentOne}%</p>
-        <p>optionTwo text: {question.optionTwo.text}</p>
-        <p>optionTwo votes: {question.optionTwo.votes.length} out of {totalVotes} votes or {percentTwo}%</p>
-        <p>My answer: {answer}</p>
+        <p>Asked by {name}</p>
+        <p>Results:</p>
+        <ul>
+        <li>Would you rather {question.optionOne.text}?
+          <p>{percentOne}%</p>
+          <p>{question.optionOne.votes.length} out of {totalVotes} votes</p>
+          <p>{answer === 'optionOne' ? 'Your vote' : ''}</p>
+        </li>
+
+        <li>Would you rather {question.optionTwo.text}?
+          <p>{percentTwo}%</p>
+          <p>{question.optionTwo.votes.length} out of {totalVotes} votes</p>
+          <p>{answer === 'optionTwo' ? 'Your vote' : ''}</p>
+        </li>
+
+        </ul>
+
+        <p>Your vote: {answer}</p>
       </div>
     )
   }
 
   showUnanswered (name, question) {
+    // ref={(input) => this.input = input}
+
+    // <form className='new-question' onSubmit={this.handleSubmit}>
+    //   <div>
+    //     <label>
+    //       <input type='radio'
+    //         value='optionOne'
+    //          />
+    //       {question.optionOne.text}
+    //     </label>
+    //   </div>
+    //
+    //   <div className='radio'>
+    //     <label>
+    //       <input type='radio'
+    //         value='optionTwo'
+    //         />
+    //       {question.optionTwo.text}
+    //     </label>
+    //   </div>
+    //
+    //   <button className='btn'
+    //     type='submit'>
+    //       Submit
+    //   </button>
+    // </form>
+
     return (
-      <div>
-        <p>{name} asks</p>
-        <p>Would You Rather...</p>
-        <p>optionOne text: {question.optionOne.text}</p>
-        <p>optionTwo text: {question.optionTwo.text}</p>
+      <div className='container'>
+        <h5>{name} asks</h5>
+        <h3>Would You Rather...</h3>
+
+        <form className='new-question' onSubmit={this.handleSubmit}>
+          <div>
+            <label>
+              <input type='radio'
+                value='optionOne'
+                checked={this.state.selectedOption === 'optionOne'}
+                onChange={this.handleChange}
+                ref={(input) => this.inputOne = input}
+                 />
+              {question.optionOne.text}
+            </label>
+          </div>
+
+          <div className='radio'>
+            <label>
+              <input type='radio'
+                value='optionTwo'
+                checked={this.state.selectedOption === 'optionTwo'}
+                onChange={this.handleChange}
+                ref={(input) => this.inputTwo = input}
+                />
+              {question.optionTwo.text}
+            </label>
+          </div>
+
+          <button className='btn'
+            type='submit'>
+              Submit
+          </button>
+        </form>
       </div>
     )
   }
