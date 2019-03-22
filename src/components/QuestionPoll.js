@@ -13,24 +13,8 @@ class QuestionPoll extends Component {
 
     // A method found accidentally!
     const answer = this.input.checked ? 'optionOne' : 'optionTwo'
-    console.log("**********")
-    console.log("this.input.value: ", this.input.checked)
-    console.log("id: ", id)
-    console.log("answer: ", answer)
-
 
     dispatch(handleAnswerQuestion(id, answer))
-
-    // const { optionOneText, optionTwoText } = this.state
-    // const { dispatch } = this.props
-    //
-    // dispatch(handleAddQuestion(optionOneText, optionTwoText))
-    //
-    // this.setState(() => ({
-    //   optionOneText: '',
-    //   optionTwoText: '',
-    //   toHome: true
-    // }))
   }
 
   showAnswered (answer, name, avatarURL, question) {
@@ -67,12 +51,6 @@ class QuestionPoll extends Component {
   }
 
   showUnanswered (name, avatarURL, question) {
-    //checked={this.state.selectedOption === 'optionOne'}
-    //checked={this.state.selectedOption === 'optionTwo'}
-    //onChange={this.handleChange}
-    //value='optionOne'
-    //value='optionTwo'
-    //ref={(input) => this.optionTwo = input}
     return (
       <div className='container'>
         <h5>{name} asks</h5>
@@ -111,20 +89,7 @@ class QuestionPoll extends Component {
   }
 
   render() {
-    // const { authedUser, id, answered, answer, name, optionOne, optionTwo } = this.props
     const { authedUser, id, answered, answer, name, avatarURL, question } = this.props
-    {/*
-      <div>
-        <p>PollInfo: {id}</p>
-        <p>Answered: {answered ? "Yes" : "No"}</p>
-        <p>My Answer: {answer}</p>
-      </div>
-
-      <div>
-        <p>PollInfo: {id}</p>
-        <p>Answered: {answered ? "Yes" : "No"}</p>
-      </div>
-    */}
 
     return (
       <div>
@@ -132,33 +97,19 @@ class QuestionPoll extends Component {
       ? this.showAnswered(answer, name, avatarURL, question)
       : this.showUnanswered(name, avatarURL, question)
       }
-
       </div>
     )
   }
 }
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
-  // 2nd arg for those passed as props to TweetPage component
-  // App.js: <TweetPage match={{params: {id: '8xf0y6ziyjabvozdd253nd'}}} />
   const { id } = props.match.params
   const answered = Object.keys(users[authedUser].answers).includes(id)
   const answer = (answered) ? users[authedUser].answers[id] : null
   const name = users[questions[id].author].name
   const avatarURL = users[questions[id].author].avatarURL
-  // const optionOne = questions[id].optionOne
-  // const optionTwo = questions[id].optionTwoText
   const question = questions[id]
-  // console.log("answered? ", answered)
-  // console.log("answer? ", answer)
 
-  // authedUser,
-  // id,
-  // answered,
-  // answer,
-  // name,
-  // optionOne,
-  // optionTwo
   return {
     authedUser,
     id,
@@ -171,4 +122,3 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
 }
 
 export default connect(mapStateToProps)(QuestionPoll)
-// export default connect()(QuestionPoll)

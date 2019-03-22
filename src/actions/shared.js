@@ -59,8 +59,6 @@ function answerQuestion (qid, authedUser, answer) {
 }
 
 export function handleAnswerQuestion (qid, answer) {
-  console.log("*** qid: ", qid)
-  console.log("*** answer: ", answer)
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
