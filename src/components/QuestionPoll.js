@@ -5,24 +5,9 @@ class QuestionPoll extends Component {
   state = {
     selectedOption: 'optionOne'
   }
-  /*
-    <Question id={id} />
-    <NewQuestion id={id} />
-    {replies.length !== 0 && <h3 className='center'>Replies</h3>}
-    <ul>
-      {replies.map((replyId) => (
-        <li key={replyId}>
-          <Question id={replyId} />
-        </li>
-      ))}
-    </ul>
-  */
 
   handleChange = (e) => {
     e.preventDefault()
-
-    // const optionText = e.target.value
-    // const optionName = e.target.name
 
     this.setState({
       selectedOption: e.target.value
@@ -53,7 +38,7 @@ class QuestionPoll extends Component {
     // }))
   }
 
-  showAnswered (answer, name, question) {
+  showAnswered (answer, name, avatarURL, question) {
     const totalVotes = question.optionOne.votes.length
                      + question.optionTwo.votes.length
 
@@ -63,7 +48,9 @@ class QuestionPoll extends Component {
     return (
       <div>
         <p>Asked by {name}</p>
+        
         <p>Results:</p>
+        <p>{avatarURL}</p>
         <ul>
         <li>Would you rather {question.optionOne.text}?
           <p>{percentOne}%</p>
@@ -84,37 +71,12 @@ class QuestionPoll extends Component {
     )
   }
 
-  showUnanswered (name, question) {
-    // ref={(input) => this.input = input}
-
-    // <form className='new-question' onSubmit={this.handleSubmit}>
-    //   <div>
-    //     <label>
-    //       <input type='radio'
-    //         value='optionOne'
-    //          />
-    //       {question.optionOne.text}
-    //     </label>
-    //   </div>
-    //
-    //   <div className='radio'>
-    //     <label>
-    //       <input type='radio'
-    //         value='optionTwo'
-    //         />
-    //       {question.optionTwo.text}
-    //     </label>
-    //   </div>
-    //
-    //   <button className='btn'
-    //     type='submit'>
-    //       Submit
-    //   </button>
-    // </form>
-
+  showUnanswered (name, avatarURL, question) {
     return (
       <div className='container'>
         <h5>{name} asks</h5>
+
+        <p>{avatarURL}</p>
         <h3>Would You Rather...</h3>
 
         <form className='new-question' onSubmit={this.handleSubmit}>
@@ -124,8 +86,7 @@ class QuestionPoll extends Component {
                 value='optionOne'
                 checked={this.state.selectedOption === 'optionOne'}
                 onChange={this.handleChange}
-                ref={(input) => this.inputOne = input}
-                 />
+              />
               {question.optionOne.text}
             </label>
           </div>
@@ -136,8 +97,7 @@ class QuestionPoll extends Component {
                 value='optionTwo'
                 checked={this.state.selectedOption === 'optionTwo'}
                 onChange={this.handleChange}
-                ref={(input) => this.inputTwo = input}
-                />
+              />
               {question.optionTwo.text}
             </label>
           </div>
@@ -153,7 +113,7 @@ class QuestionPoll extends Component {
 
   render() {
     // const { authedUser, id, answered, answer, name, optionOne, optionTwo } = this.props
-    const { authedUser, id, answered, answer, name, question } = this.props
+    const { authedUser, id, answered, answer, name, avatarURL, question } = this.props
     {/*
       <div>
         <p>PollInfo: {id}</p>
@@ -170,8 +130,8 @@ class QuestionPoll extends Component {
     return (
       <div>
       {answered
-      ? this.showAnswered(answer, name, question)
-      : this.showUnanswered(name, question)
+      ? this.showAnswered(answer, name, avatarURL, question)
+      : this.showUnanswered(name, avatarURL, question)
       }
 
       </div>
@@ -186,6 +146,7 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
   const answered = Object.keys(users[authedUser].answers).includes(id)
   const answer = (answered) ? users[authedUser].answers[id] : null
   const name = users[questions[id].author].name
+  const avatarURL = users[questions[id].author].avatarURL
   // const optionOne = questions[id].optionOne
   // const optionTwo = questions[id].optionTwoText
   const question = questions[id]
@@ -205,6 +166,7 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
     answered,
     answer,
     name,
+    avatarURL,
     question
   }
 }
