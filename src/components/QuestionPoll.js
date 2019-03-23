@@ -117,6 +117,14 @@ class QuestionPoll extends Component {
         </div>
       )
 
+    } else if (this.props.question === null) {
+
+      return (
+        <div>
+        <NoMatch />
+        </div>
+      )
+
     } else {
 
       const { authedUser, answered, answer, name, avatarURL, question } = this.props
@@ -135,11 +143,20 @@ class QuestionPoll extends Component {
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
   const { id } = props.match.params
-  const answered = Object.keys(users[authedUser].answers).includes(id)
-  const answer = (answered) ? users[authedUser].answers[id] : null
-  const name = users[questions[id].author].name
-  const avatarURL = users[questions[id].author].avatarURL
-  const question = questions[id]
+  console.log("*** QuestionPOll mapStateToProps ***")
+  console.log('id: ', id)
+  let question = null
+  let answered = null
+  let answer = null
+  let name = null
+  let avatarURL = null
+  if (Object.keys(questions).includes(id)) {
+    question = questions[id]
+    answered = Object.keys(users[authedUser].answers).includes(id)
+    answer = (answered) ? users[authedUser].answers[id] : null
+    name = users[questions[id].author].name
+    avatarURL = users[questions[id].author].avatarURL
+  }
 
   return {
     authedUser,
