@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { handleAnswerQuestion } from '../actions/shared'
 import { connect } from 'react-redux'
+import NoMatch from './NoMatch'
 // import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class QuestionPoll extends Component {
@@ -107,16 +108,28 @@ class QuestionPoll extends Component {
   }
 
   render() {
-    const { answered, answer, name, avatarURL, question } = this.props
+    if (this.props.authedUser === '' || this.props.authedUser === null) {
 
-    return (
-      <div>
-      {answered
-      ? this.showAnswered(answer, name, avatarURL, question)
-      : this.showUnanswered(name, avatarURL, question)
-      }
-      </div>
-    )
+      return (
+        <div>
+          <h2>Sign in first</h2>
+          <NoMatch />
+        </div>
+      )
+
+    } else {
+
+      const { authedUser, answered, answer, name, avatarURL, question } = this.props
+      return (
+        <div>
+        {answered
+        ? this.showAnswered(answer, name, avatarURL, question)
+        : this.showUnanswered(name, avatarURL, question)
+        }
+        </div>
+      )
+
+    }
   }
 }
 

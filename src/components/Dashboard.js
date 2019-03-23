@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import NoMatch from './NoMatch'
 
 class Dashboard extends Component {
   state = {
@@ -16,39 +17,52 @@ class Dashboard extends Component {
   }
 
   render() {
-    const selectedQuestions = this.state.showAnswered
-                            ? this.props.answered
-                            : this.props.unanswered
+    if (this.props.authedUser === '' || this.props.authedUser === null) {
 
-    return (
-      <div>
-        <div className='tab'>
-          <button type='button'
-            value='unanswered'
-            disabled={this.state.showAnswered === false}
-            onClick={(e) => this.setQuestionType(e)}>
-              Unanswered
-          </button>
-
-          <button type='button'
-            value='answered'
-            disabled={this.state.showAnswered === true}
-            onClick={(e) => this.setQuestionType(e)}>
-              Answered
-          </button>
+      return (
+        <div>
+          <h2>Sign in first</h2>
+          <NoMatch />
         </div>
+      )
 
-        <h6>{this.state.showAnswered ? "Answered" : "Unanswered"} Questions</h6>
+    } else {
 
-        <ul className='dashboard-list'>
-          {Object.keys(selectedQuestions).map((id) => (
-            <li key={id}>
-              <Question id={id}/>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
+      const selectedQuestions = this.state.showAnswered
+                              ? this.props.answered
+                              : this.props.unanswered
+
+      return (
+        <div>
+          <div className='tab'>
+            <button type='button'
+              value='unanswered'
+              disabled={this.state.showAnswered === false}
+              onClick={(e) => this.setQuestionType(e)}>
+                Unanswered
+            </button>
+
+            <button type='button'
+              value='answered'
+              disabled={this.state.showAnswered === true}
+              onClick={(e) => this.setQuestionType(e)}>
+                Answered
+            </button>
+          </div>
+
+          <h6>{this.state.showAnswered ? "Answered" : "Unanswered"} Questions</h6>
+
+          <ul className='dashboard-list'>
+            {Object.keys(selectedQuestions).map((id) => (
+              <li key={id}>
+                <Question id={id}/>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+
+    }
   }
 }
 
@@ -70,6 +84,7 @@ function mapStateToProps ({ authedUser, users, questions }) {
   }
 
   return {
+    authedUser,
     answered,
     unanswered
   }

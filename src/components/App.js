@@ -11,12 +11,12 @@ import AddQuestion from './AddQuestion'
 import LeaderBoard from './LeaderBoard'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
-// import NoMatch from './NoMatch'
+import NoMatch from './NoMatch'
 // import logo from '../logo.svg';
 
-function NoMatch() {
-  return <h2>404: Page Not Found</h2>
-}
+// function NoMatch() {
+//   return <h2>404: Page Not Found</h2>
+// }
 
 // class NoMatch extends Component {
 //   render() {
@@ -30,10 +30,20 @@ function NoMatch() {
 //   }
 // }
 
+function handleDashBoard (authedUser) {
+  // console.log("*** handleDashBoard ***")
+  // console.log('authedUser: ', authedUser)
+  // // console.log('this.props: ', this.props)
+  // console.log("*** handleDashBoard DONE ***")
+  return (
+    (authedUser !== '' && authedUser !== null) ? <Dashboard /> : ''
+  )
+}
+
 class App extends Component {
   //const { dispatch } = this.props
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    (this.props.loading !== true) && this.props.dispatch(handleInitialData())
   }
 
   signOut () {
@@ -72,6 +82,7 @@ class App extends Component {
                       <img src={logo} className="App-logo" alt="logo" />
                       <Route path='/' exact component={Dashboard} />
                       <Route path='/questions/:id' exact component={QuestionPoll} />
+                      <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
                     */ }
                     <Switch>
                       <Route path='/' exact component={Dashboard} />
