@@ -184,20 +184,32 @@ a {
 
 .tab button {
   background-color: inherit;
-  float: left;
+  /* float: left; */
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+      font-size: 18px;
+      selected: #7fffd4;
 }
 
 .tab button:hover {
   background-color: #ddd;
 }
 
-.tab button.active {
+.tab button:active {
   background-color: #ccc;
+  /* background-color: #7fffd4; */
+  font-weight: bold;
+  color: #7fffd4;
+}
+
+.tab button:focus {
+  background-color: #ccc;
+  /* background-color: #7fffd4; */
+  font-weight: bold;
+  color: #7fffd4;
 }
 
 

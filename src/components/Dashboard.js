@@ -50,7 +50,7 @@ class Dashboard extends Component {
             </button>
           </div>
 
-          <h6>{this.state.showAnswered ? "Answered" : "Unanswered"} Questions</h6>
+          <h3>{this.state.showAnswered ? "Answered" : "Unanswered"} Questions</h3>
 
           <ul className='dashboard-list'>
             {Object.keys(selectedQuestions).map((id) => (
