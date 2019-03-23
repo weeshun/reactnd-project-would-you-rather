@@ -78,41 +78,44 @@ class QuestionPoll extends Component {
 
   showUnanswered (name, avatarURL, question) {
     return (
-      <div className='container'>
-        <h5>{name} asks</h5>
-
+      <div className='question-unanswered'>
         <div>
+          <h3>{name} asks</h3>
           <img src={avatarURL} alt={`Avatar of ${name}`} className='avatar'/>
         </div>
 
-        <h3>Would You Rather...</h3>
+        <div>
 
-        <form className='new-question' onSubmit={this.handleSubmit}>
-          <div>
-            <label>
-              <input type='radio'
-                name='questionPoll'
-                defaultChecked
-                ref={(input) => this.input = input}
-              />
-              {question.optionOne.text}
-            </label>
-          </div>
+          <h3>Would You Rather...</h3>
 
-          <div className='radio'>
-            <label>
-              <input type='radio'
-                name='questionPoll'
-              />
-              {question.optionTwo.text}
-            </label>
-          </div>
+          <form onSubmit={this.handleSubmit}>
 
-          <button className='btn'
-            type='submit'>
-              Submit
-          </button>
-        </form>
+            <div>
+              <label>
+                <input type='radio'
+                  name='questionPoll'
+                  defaultChecked
+                  ref={(input) => this.input = input}
+                />
+                {question.optionOne.text}
+              </label>
+            </div>
+
+            <div className='radio'>
+              <label>
+                <input type='radio'
+                  name='questionPoll'
+                />
+                {question.optionTwo.text}
+              </label>
+            </div>
+
+            <button className='btn'
+              type='submit'>
+                Submit
+            </button>
+          </form>
+        </div>
       </div>
     )
   }
