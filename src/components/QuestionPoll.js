@@ -127,7 +127,8 @@ class QuestionPoll extends Component {
 
     } else {
 
-      const { authedUser, answered, answer, name, avatarURL, question } = this.props
+      const { answered, answer, name, avatarURL, question } = this.props
+      
       return (
         <div>
         {answered
@@ -143,13 +144,15 @@ class QuestionPoll extends Component {
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
   const { id } = props.match.params
-  console.log("*** QuestionPOll mapStateToProps ***")
-  console.log('id: ', id)
+  // console.log("*** QuestionPOll mapStateToProps ***")
+  // console.log('id: ', id)
+
   let question = null
   let answered = null
   let answer = null
   let name = null
   let avatarURL = null
+
   if (Object.keys(questions).includes(id)) {
     question = questions[id]
     answered = Object.keys(users[authedUser].answers).includes(id)
