@@ -33,7 +33,7 @@ class QuestionPoll extends Component {
         <h2>Asked by {name}</h2>
 
         <div>
-          <img src={avatarURL} alt={`Avatar of ${name}`} className='tinyavatar'/>
+          <img src={avatarURL} alt={`Avatar of ${name}`} className='avatar'/>
         </div>
 
         <h2>Results:</h2>
@@ -71,7 +71,7 @@ class QuestionPoll extends Component {
         <h5>{name} asks</h5>
 
         <div>
-          <img src={avatarURL} alt={`Avatar of ${name}`} className='tinyavatar'/>
+          <img src={avatarURL} alt={`Avatar of ${name}`} className='avatar'/>
         </div>
 
         <h3>Would You Rather...</h3>
