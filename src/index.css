@@ -98,7 +98,7 @@ a {
     .input {
       /* max-width: 800px; */
       width: 50%;
-      margin-left: 30 auto;
+      margin-left: 40 auto;
       padding: 10px;
     }
 
@@ -204,7 +204,52 @@ ul {
 li {
   list-style-type: none;
   padding: 10px;
+  margin: 20px;
   text-decoration: none;
+}
+
+.poll ul {
+  max-width: 300px;
+}
+
+.poll li {
+  list-style-type: none;
+  padding: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+      /* background-color: #808080; */
+      max-width: 528px;
+      background-color: #dcdcdc;
+      border: 1px solid black;
+}
+
+.poll-your-vote {
+  /* text-align: center; */
+  justify-content: center;
+  width: 40px;
+  /* margin-top: 10px; */
+  margin-left: 20px;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 5px;
+  background-color: #cd5c5c;
+  color: #ffffff;
+}
+
+.leader-board ul {
+  max-width: 300px;
+  align-items: center;
+}
+
+.leader-board li {
+  list-style-type: none;
+  padding: 20px;
+  margin: 10px;
+  text-decoration: none;
+      /* background-color: #808080; */
+      max-width: 528px;
+      background-color: #dcdcdc;
+      border: 1px solid black;
 }
 
 .avatar {
@@ -283,6 +328,26 @@ li {
   font-size: 16px;
 }
 
+    .new-question {
+      maxwidth: 100%;
+      max-width: 590px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+
+      padding: 20px;
+      max-width: 432px;;
+      background-color: #dcdcdc;
+      border: 1px solid black;
+    }
+
+    .new-question-input {
+      /* max-width: 800px; */
+      maxwidth: 80%;
+      max-width: 432px;
+      margin-left: 40 auto;
+      padding: 10px;
+    }
 /* Hacky but less typing in the video */
 
 .tweet-info > div > span:first-child {
@@ -366,6 +431,7 @@ li {
   width: 350px;
   border-radius: 590px;
   border: 1px solid #333;
+  margin-top: 10px;
 }
 
 .filler {

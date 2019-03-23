@@ -65,39 +65,108 @@ class App extends Component {
     // ? <Route path='/login' component={SignIn} />
     // <Route path='/login' component={SignIn} />
 
-    return (
-      <BrowserRouter>
-        <Fragment>
-          <LoadingBar />
-          {this.props.loading === true
-            ? null
-            : (this.props.authedUser === '' || this.props.authedUser === null)
-              ? <SignIn />
-              : <div className="container">
-                  <Nav
-                    name={this.props.authedUserName}
-                    avatarURL={this.props.authedUserAvatarURL}/>
-                  <div>
-                    { /*
-                      <img src={logo} className="App-logo" alt="logo" />
-                      <Route path='/' exact component={Dashboard} />
-                      <Route path='/questions/:id' exact component={QuestionPoll} />
-                      <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
-                    */ }
-                    <Switch>
-                      <Route path='/' exact component={Dashboard} />
-                      <Route path='/questions/:id' exact component={QuestionPoll} />
-                      <Route path='/add' exact component={AddQuestion} />
-                      <Route path='/leaderboard' exact component={LeaderBoard} />
-                      <Route path='/logout' exact component={SignOut} />
-                      <Route component={NoMatch} />
-                    </Switch>
+    // return (
+    //   <BrowserRouter>
+    //     <Fragment>
+    //       <LoadingBar />
+    //       {this.props.loading === true
+    //         ? null
+    //         : (this.props.authedUser === '' || this.props.authedUser === null)
+    //           ? <SignIn />
+    //           : <div className="container">
+    //               <Nav
+    //                 name={this.props.authedUserName}
+    //                 avatarURL={this.props.authedUserAvatarURL}/>
+    //               <div>
+    //                 { /*
+    //                   <img src={logo} className="App-logo" alt="logo" />
+    //                   <Route path='/' exact component={Dashboard} />
+    //                   <Route path='/questions/:id' exact component={QuestionPoll} />
+    //                   <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
+    //                 */ }
+    //                 <Switch>
+    //                   <Route path='/' exact component={Dashboard} />
+    //                   <Route path='/questions/:id' exact component={QuestionPoll} />
+    //                   <Route path='/add' exact component={AddQuestion} />
+    //                   <Route path='/leaderboard' exact component={LeaderBoard} />
+    //                   <Route path='/logout' exact component={SignOut} />
+    //                   <Route component={NoMatch} />
+    //                 </Switch>
+    //               </div>
+    //             </div>
+    //       }
+    //     </Fragment>
+    //   </BrowserRouter>
+    // );
+
+      // return (
+      //   <BrowserRouter>
+      //     <Fragment>
+      //       <LoadingBar />
+      //       {this.props.loading === true
+      //         ? null
+      //         : <div className="container">
+      //               <Nav
+      //                 name={this.props.authedUserName}
+      //                 avatarURL={this.props.authedUserAvatarURL}/>
+      //               <div>
+      //                 { /*
+      //                   <img src={logo} className="App-logo" alt="logo" />
+      //                   <Route path='/' exact component={Dashboard} />
+      //                   <Route path='/questions/:id' exact component={QuestionPoll} />
+      //                   <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
+      //                 */ }
+      //
+      //                   <Route path='/login' exact component={SignIn} />
+      //                   <Route path='/' exact component={Dashboard} />
+      //                   <Route path='/questions/:id' exact component={QuestionPoll} />
+      //                   <Route path='/add' exact component={AddQuestion} />
+      //                   <Route path='/leaderboard' exact component={LeaderBoard} />
+      //                   <Route path='/logout' exact component={SignOut} />
+      //
+      //
+      //               </div>
+      //             </div>
+      //       }
+      //     </Fragment>
+      //   </BrowserRouter>
+      // );
+
+      // ? <Route path='/login' component={SignIn} />
+      return (
+        <BrowserRouter>
+          <Fragment>
+            <LoadingBar />
+            {this.props.loading === true
+              ? null
+              : (this.props.authedUser === '' || this.props.authedUser === null)
+                ? <SignIn />
+                : <div className="container">
+                    <Nav
+                      name={this.props.authedUserName}
+                      avatarURL={this.props.authedUserAvatarURL}/>
+                    <div>
+                      { /*
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <Route path='/' exact component={Dashboard} />
+                        <Route path='/questions/:id' exact component={QuestionPoll} />
+                        <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
+                      */ }
+
+                        <Route path='/' exact component={Dashboard} />
+                        <Route path='/questions/:id' exact component={QuestionPoll} />
+                        <Route path='/add' exact component={AddQuestion} />
+                        <Route path='/leaderboard' exact component={LeaderBoard} />
+                        <Route path='/logout' exact component={SignOut} />
+
+
+                    </div>
                   </div>
-                </div>
-          }
-        </Fragment>
-      </BrowserRouter>
-    );
+            }
+          </Fragment>
+        </BrowserRouter>
+      );
+
   }
 }
 

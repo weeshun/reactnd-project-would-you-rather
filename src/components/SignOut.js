@@ -22,8 +22,10 @@ class SignOut extends Component {
     // }
     //{userNames.map((n) => (<option>{n}</option>)}
     // return null
+    // return <Redirect to='/' />
+    // return <Redirect to='/login' />
     console.log("*** leaving SignOut ***")
-    return <Redirect to='/' />
+    return <Redirect to='/login' />
   }
 }
 

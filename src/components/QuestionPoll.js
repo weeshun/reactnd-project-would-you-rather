@@ -5,6 +5,16 @@ import NoMatch from './NoMatch'
 // import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class QuestionPoll extends Component {
+  // ProgressBar from:
+  //  https://medium.com/@ItsMeDannyZ/how-to-build-a-progress-bar-with-react-8c5e79731d1f
+  ProgressBar = (percentage) => {
+    return (
+      <div className='progress-bar'>
+        <div className='filler' style={{ width: `${percentage}%` }} />
+      </div>
+    )
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
 
@@ -17,17 +27,16 @@ class QuestionPoll extends Component {
   }
 
   showAnswered (answer, name, avatarURL, question) {
+    // Don't have to worry about the denotimator being zero here since you can
+    // only see this poll data at least one user (that is, you) has voted.
+
     const totalVotes = question.optionOne.votes.length
                      + question.optionTwo.votes.length
 
-    const percentOne = (totalVotes > 0)
-                     ? (question.optionOne.votes.length * 100. / totalVotes)
+    const percentOne = (question.optionOne.votes.length * 100. / totalVotes)
                         .toFixed(1)
-                     : null
-    const percentTwo = (totalVotes > 0)
-                     ? (question.optionTwo.votes.length * 100. / totalVotes)
+    const percentTwo = (question.optionTwo.votes.length * 100. / totalVotes)
                         .toFixed(1)
-                     : null
 
     return (
       <div>
@@ -38,30 +47,31 @@ class QuestionPoll extends Component {
         </div>
 
         <h2>Results:</h2>
-        <ul>
-        <li><strong>Would you rather {question.optionOne.text}?</strong>
-          <p>{question.optionOne.votes.length} out of {totalVotes} votes
-          (percentOne !== null) ? ({percentOne}%) : ''</p>
-          <p>{answer === 'optionOne' ? 'Your vote' : ''}</p>
-        </li>
 
-        {/*
-        <ProgressBar now={percentOne} label={`${percentOne}%`} />
-        */}
+        <ul className='poll'>
+
+        <li><strong>Would you rather {question.optionOne.text}?</strong>
+          {answer === 'optionOne' && <span className='poll-your-vote'>Your vote</span>}
+          {this.ProgressBar(percentOne)}
+          {/*
+          <ProgressBar now={percentOne} label={`${percentOne}%`} />
+          */}
+
+          <p>{question.optionOne.votes.length} out of {totalVotes} votes ({percentOne}%)</p>
+        </li>
 
         <li><strong>Would you rather {question.optionTwo.text}?</strong>
-          (percentTwo !== null) && <p>{percentTwo}%</p>
-          <p>{question.optionTwo.votes.length} out of {totalVotes} votes</p>
-          <p>{answer === 'optionTwo' ? 'Your vote' : ''}</p>
-        </li>
+          {answer === 'optionTwo' && <span className='poll-your-vote'>Your vote</span>}
+          {this.ProgressBar(percentTwo)}
+          {/*
+          <ProgressBar now={percentOne} label={`${percentOne}%`} />
+          */}
 
-        {/*
-        <ProgressBar now={percentTwo} label={`${percentTwo}%`} />
-        */}
+          <p>{question.optionTwo.votes.length} out of {totalVotes} votes ({percentTwo}%)</p>
+        </li>
 
         </ul>
 
-        <p>Your vote: {answer}</p>
       </div>
     )
   }
@@ -128,7 +138,7 @@ class QuestionPoll extends Component {
     } else {
 
       const { answered, answer, name, avatarURL, question } = this.props
-      
+
       return (
         <div>
         {answered

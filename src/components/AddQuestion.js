@@ -46,31 +46,31 @@ class AddQuestion extends Component {
 
     return (
       <div className='container'>
-        <h3 className='center'>Create New Question</h3>
+        <h2 className='center'>Create New Question</h2>
 
         <form className='new-question' onSubmit={this.handleSubmit}>
 
-          <h4>Complete the question</h4>
+          <p>Complete the question</p>
 
-          <p>Would you rather...</p>
+          <h3>Would you rather...</h3>
 
-          <div className='input'>
+          <div>
             <input type='text'
               value={optionOneText}
               name='optionOneText'
               onChange={this.handleChange}
-              className='input'
+              className='new-question-input'
             />
           </div>
 
-          <p>OR</p>
+          <p>or</p>
 
-          <div className='input'>
+          <div>
             <input type='text'
               value={optionTwoText}
               name='optionTwoText'
               onChange={this.handleChange}
-              className='input'
+              className='new-question-input'
             />
           </div>
 

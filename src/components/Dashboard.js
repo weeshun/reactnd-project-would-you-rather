@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import Question from './Question'
 import NoMatch from './NoMatch'
 
@@ -17,16 +18,15 @@ class Dashboard extends Component {
   }
 
   render() {
-    if (this.props.authedUser === '' || this.props.authedUser === null) {
-
-      return (
-        <div>
-          <h2>Sign in first</h2>
-          <NoMatch />
-        </div>
-      )
-
-    } else {
+    // if (this.props.authedUser === '' || this.props.authedUser === null) {
+    //
+    //   return (
+    //     <div>
+    //       <Redirect to='/login' />
+    //     </div>
+    //   )
+    //
+    // } else {
 
       const selectedQuestions = this.state.showAnswered
                               ? this.props.answered
@@ -62,7 +62,7 @@ class Dashboard extends Component {
         </div>
       )
 
-    }
+    // }
   }
 }
 
