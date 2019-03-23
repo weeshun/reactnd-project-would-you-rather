@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter, Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 
@@ -39,24 +39,24 @@ class SignIn extends Component {
         <h3>Please sign in to continue</h3>
 
         <div className='signin'>
-        <h2>Sign In</h2>
+          <h2>Sign In</h2>
 
-        <select className='dashboard-list' onChange={this.handleChange}>
-          <option value='select'>Select Your Account</option>
-          {userIDs.map((id) => (
-            <option value={id} key={id} defaultChecked={false}>
-              {users[id].name}
-            </option>
-          ))}
-        </select>
+          <select className='dashboard-list' onChange={this.handleChange}>
+            <option value='select'>Select Your Account</option>
+            {userIDs.map((id) => (
+              <option value={id} key={id} defaultChecked={false}>
+                {users[id].name}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <h2>Or</h2>
+        <h4>Or</h4>
 
         <div className='signin'>
-        <p>If you don't have an account...</p>
-        
-        <h2>Sign Up</h2>
+          <p>If you don't have an account...</p>
+
+          <Link to='/signup'>Sign Up</Link>
         </div>
 
       </div>

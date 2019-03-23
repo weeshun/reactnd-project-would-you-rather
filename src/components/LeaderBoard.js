@@ -21,15 +21,24 @@ class LeaderBoard extends Component {
           <ul className='leader-board'>
             {sortedKeys.map((id) => (
               <li key={id}>
-                <img
-                  src={users[id].avatarURL}
-                  alt={`Avatar of ${users[id].name}`}
-                  className='avatar'
-                />
-                <p>{users[id].name}</p>
-                <p>Posted {users[id].questions.length} questions</p>
-                <p>Answered {Object.keys(users[id].answers).length} questions</p>
-                <p>Score: {users[id].questions.length + Object.keys(users[id].answers).length}</p>
+                <div>
+                  <h3 >{users[id].name}</h3>
+                  <img
+                    src={users[id].avatarURL}
+                    alt={`Avatar of ${users[id].name}`}
+                    className='avatar'
+                  />
+                </div>
+                <div>
+                  <ul>
+                  <li>Answered questions: {Object.keys(users[id].answers).length}</li>
+                  <li>Created questions: {users[id].questions.length}</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Score</h3>
+                  <p className='center'>{users[id].questions.length + Object.keys(users[id].answers).length}</p>
+                </div>
               </li>
             ))}
           </ul>

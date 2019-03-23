@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 //import { connect } from 'react-redux'
 
 export default function Nav ({name, avatarURL}) {
-  console.log("*** NAV ***")
-  console.log("name: ", name)
-  console.log("avatarURL: ", avatarURL)
+  // console.log("*** NAV ***")
+  // console.log("name: ", name)
+  // console.log("avatarURL: ", avatarURL)
   return (
     <nav className='nav'>
       <ul>
@@ -37,11 +37,10 @@ export default function Nav ({name, avatarURL}) {
            </div>
         </li>
         <li>
-          <NavLink to='/logout' activeClassName='active'>
+          <NavLink to='/signout' activeClassName='active'>
             Logout
           </NavLink>
         </li>
-
 
       </ul>
     </nav>

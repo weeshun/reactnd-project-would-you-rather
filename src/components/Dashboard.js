@@ -22,7 +22,7 @@ class Dashboard extends Component {
     //
     //   return (
     //     <div>
-    //       <Redirect to='/login' />
+    //       <Redirect to='/signin' />
     //     </div>
     //   )
     //
@@ -33,7 +33,7 @@ class Dashboard extends Component {
                               : this.props.unanswered
 
       return (
-        <div>
+        <div className='center'>
           <div className='tab'>
             <button type='button'
               value='unanswered'

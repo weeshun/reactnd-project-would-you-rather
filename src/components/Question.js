@@ -51,11 +51,9 @@ class Question extends Component {
     const shortAnswerSample = getShorterStr(question.optionOne.text)
 
     return (
-      <div className='question' className='center'>
-        <div className='center'>
-        <p className='center'>{user.name} asks:</p>
-        </div>
+      <div className='question'>
         <div>
+        <h2 className='center'>{user.name} asks:</h2>
         <img
           src={user.avatarURL}
           alt={`Avatar of ${user.name}`}
@@ -68,10 +66,14 @@ class Question extends Component {
               alt={`Avatar of ${user.name}`}
               className='avatar'
             />
-          </span>
+          </spa
+        </div>
+        <div>
+        n>
         */}
-
-          <h5>Would you rather</h5>
+        </div>
+        <div>
+          <h3>Would you rather</h3>
           <div className='short-sample-answer'>...{shortAnswerSample}...</div>
           <button className='btn'
             onClick={(e) => this.showInfo(e, id)}>

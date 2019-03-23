@@ -7,7 +7,7 @@ class SignOut extends Component {
   componentDidMount() {
     console.log("*** Mounting SignOut ***")
     this.props.dispatch(unsetAuthedUser())
-    // this.props.history.push('/login')
+    // this.props.history.push('/signin')
     // this.props.history.push('/')
   }
 
@@ -23,9 +23,9 @@ class SignOut extends Component {
     //{userNames.map((n) => (<option>{n}</option>)}
     // return null
     // return <Redirect to='/' />
-    // return <Redirect to='/login' />
+    // return <Redirect to='/signin' />
     console.log("*** leaving SignOut ***")
-    return <Redirect to='/login' />
+    return <Redirect to='/signin' />
   }
 }
 

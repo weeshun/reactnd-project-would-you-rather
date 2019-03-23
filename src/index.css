@@ -124,6 +124,7 @@ a {
 /* Nav */
 
 .nav ul {
+  background-color: #5f9ea0;
   display: flex;
   flex-direction: row;
   /*justify-content: flex-start;*/
@@ -161,8 +162,8 @@ a {
 }
 
 .tinyavatar {
-        width: 30px;
-  border-radius: 15px;
+        width: 40px;
+  border-radius: 25px;
         margin: 0px;
 }
 
@@ -176,6 +177,9 @@ a {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tab button {
@@ -209,7 +213,7 @@ li {
 }
 
 .poll ul {
-  max-width: 300px;
+  max-width: 528px;
 }
 
 .poll li {
@@ -218,9 +222,22 @@ li {
   margin-left: 20px;
   text-decoration: none;
       /* background-color: #808080; */
-      max-width: 528px;
+      max-width: 480px;
       background-color: #dcdcdc;
       border: 1px solid black;
+}
+
+.poll-question {
+  max-width: 384px;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  /* border: 1px solid #dad7d7; */
+  border: 1px solid black;
+  /* border-radius: 3px; */
+  /* cursor: pointer; */
+      flex-direction: row;
+      background-color: #92a8d1;
 }
 
 .poll-your-vote {
@@ -236,20 +253,41 @@ li {
   color: #ffffff;
 }
 
-.leader-board ul {
-  max-width: 300px;
+.leader-board {
+  max-width: 576px;
   align-items: center;
+}
+
+.leader-board ul {
+  /* max-width: 528px; */
+  /* align-items: center; */
 }
 
 .leader-board li {
   list-style-type: none;
   padding: 20px;
-  margin: 10px;
+  /* margin: 10px; */
   text-decoration: none;
       /* background-color: #808080; */
-      max-width: 528px;
+      max-width: 480px;
       background-color: #dcdcdc;
-      border: 1px solid black;
+      /* border: 1px solid black; */
+  display: flex;
+  vertical-align: middle;
+}
+
+.leader-board > li > div:first-child {
+  flex: 1;
+}
+
+.leader-board > li > div:nth-child(2) {
+  flex: 3;
+  vertical-align: middle;
+}
+
+.leader-board > li > div:nth-child(3) {
+  flex: 1;
+  vertical-align: middle;
 }
 
 .avatar {
@@ -272,7 +310,16 @@ li {
   /* border-radius: 3px; */
   /* cursor: pointer; */
       flex-direction: row;
-      background-color: #92a8d1;
+      background-color: #e6e6fa;
+}
+
+.question > div:first-child {
+  flex: 1;
+}
+
+.question >  div:nth-child(2) {
+  flex: 3;
+  vertical-align: middle;
 }
 
 .question-inner {

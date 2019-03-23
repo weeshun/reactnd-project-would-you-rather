@@ -10,6 +10,7 @@ import QuestionPoll from './QuestionPoll'
 import AddQuestion from './AddQuestion'
 import LeaderBoard from './LeaderBoard'
 import SignIn from './SignIn'
+// import SignUp from './SignUp'
 import SignOut from './SignOut'
 import NoMatch from './NoMatch'
 // import logo from '../logo.svg';
@@ -61,9 +62,9 @@ class App extends Component {
     console.log("*** APP ***")
     console.log("authedUser: ", this.props.authedUser)
 
-    // <Route path='/logout' component={this.signOut} />
-    // ? <Route path='/login' component={SignIn} />
-    // <Route path='/login' component={SignIn} />
+    // <Route path='/signout' component={this.signOut} />
+    // ? <Route path='/signin' component={SignIn} />
+    // <Route path='/signin' component={SignIn} />
 
     // return (
     //   <BrowserRouter>
@@ -89,7 +90,7 @@ class App extends Component {
     //                   <Route path='/questions/:id' exact component={QuestionPoll} />
     //                   <Route path='/add' exact component={AddQuestion} />
     //                   <Route path='/leaderboard' exact component={LeaderBoard} />
-    //                   <Route path='/logout' exact component={SignOut} />
+    //                   <Route path='/signout' exact component={SignOut} />
     //                   <Route component={NoMatch} />
     //                 </Switch>
     //               </div>
@@ -117,12 +118,12 @@ class App extends Component {
       //                   <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
       //                 */ }
       //
-      //                   <Route path='/login' exact component={SignIn} />
+      //                   <Route path='/signin' exact component={SignIn} />
       //                   <Route path='/' exact component={Dashboard} />
       //                   <Route path='/questions/:id' exact component={QuestionPoll} />
       //                   <Route path='/add' exact component={AddQuestion} />
       //                   <Route path='/leaderboard' exact component={LeaderBoard} />
-      //                   <Route path='/logout' exact component={SignOut} />
+      //                   <Route path='/signout' exact component={SignOut} />
       //
       //
       //               </div>
@@ -132,7 +133,7 @@ class App extends Component {
       //   </BrowserRouter>
       // );
 
-      // ? <Route path='/login' component={SignIn} />
+      // ? <Route path='/signin' component={SignIn} />
       return (
         <BrowserRouter>
           <Fragment>
@@ -151,13 +152,16 @@ class App extends Component {
                         <Route path='/' exact component={Dashboard} />
                         <Route path='/questions/:id' exact component={QuestionPoll} />
                         <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
+
+                        <Route path='/signup' exact component={SignUp} />
                       */ }
 
                         <Route path='/' exact component={Dashboard} />
                         <Route path='/questions/:id' exact component={QuestionPoll} />
                         <Route path='/add' exact component={AddQuestion} />
                         <Route path='/leaderboard' exact component={LeaderBoard} />
-                        <Route path='/logout' exact component={SignOut} />
+
+                        <Route path='/signout' exact component={SignOut} />
 
 
                     </div>
