@@ -66,7 +66,7 @@ function mapStateToProps ({ authedUser, users, questions }) {
 
     answeredIDs.forEach((id) => (answered[id] = questions[id]))
     unansweredIDs.forEach((id) => (unanswered[id] = questions[id]))
-    
+
   }
 
   return {

@@ -12,14 +12,23 @@ import LeaderBoard from './LeaderBoard'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
 // import NoMatch from './NoMatch'
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 
 function NoMatch() {
   return <h2>404: Page Not Found</h2>
 }
 
-// progress-bar
-// https://medium.com/@ItsMeDannyZ/how-to-build-a-progress-bar-with-react-8c5e79731d1f
+// class NoMatch extends Component {
+//   render() {
+//     return (
+//       <div className='question'>
+//         <div className='question-info'>
+//           <h5>Error 404: Page Not Found</h5>
+//         </div>
+//       </div>
+//     )
+//   }
+// }
 
 class App extends Component {
   //const { dispatch } = this.props
@@ -52,7 +61,7 @@ class App extends Component {
           <LoadingBar />
           {this.props.loading === true
             ? null
-            : (this.props.authedUser === '')
+            : (this.props.authedUser === '' || this.props.authedUser === null)
               ? <SignIn />
               : <div className="container">
                   <Nav
@@ -61,13 +70,15 @@ class App extends Component {
                   <div>
                     { /*
                       <img src={logo} className="App-logo" alt="logo" />
+                      <Route path='/' exact component={Dashboard} />
+                      <Route path='/questions/:id' exact component={QuestionPoll} />
                     */ }
                     <Switch>
                       <Route path='/' exact component={Dashboard} />
                       <Route path='/questions/:id' exact component={QuestionPoll} />
-                      <Route path='/add' component={AddQuestion} />
-                      <Route path='/leaderboard' component={LeaderBoard} />
-                      <Route path='/logout' component={SignOut} />
+                      <Route path='/add' exact component={AddQuestion} />
+                      <Route path='/leaderboard' exact component={LeaderBoard} />
+                      <Route path='/logout' exact component={SignOut} />
                       <Route component={NoMatch} />
                     </Switch>
                   </div>
@@ -92,9 +103,9 @@ function mapStateToProps ({ authedUser, users }) {
     authedUserName = users[authedUser].name
     authedUserAvatarURL = users[authedUser].avatarURL
   }
-  // loading: users === null,
+  // loading: authedUser === null,
   return {
-    loading: authedUser === null,
+    loading: users === null,
     authedUser,
     authedUserName,
     authedUserAvatarURL

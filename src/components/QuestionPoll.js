@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { handleAnswerQuestion } from '../actions/shared'
 import { connect } from 'react-redux'
+// import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class QuestionPoll extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { dispatch, authedUser, id, answered, name, avatarURL, question } = this.props
+    const { dispatch, id } = this.props
 
     // A method (.checked property) found accidentally!
     const answer = this.input.checked ? 'optionOne' : 'optionTwo'
@@ -18,29 +19,44 @@ class QuestionPoll extends Component {
     const totalVotes = question.optionOne.votes.length
                      + question.optionTwo.votes.length
 
-    const percentOne = (question.optionOne.votes.length * 100. / totalVotes)
-                     .toFixed(1)
-    const percentTwo = (question.optionTwo.votes.length * 100. / totalVotes)
-                     .toFixed(1)
+    const percentOne = (totalVotes > 0)
+                     ? (question.optionOne.votes.length * 100. / totalVotes)
+                        .toFixed(1)
+                     : null
+    const percentTwo = (totalVotes > 0)
+                     ? (question.optionTwo.votes.length * 100. / totalVotes)
+                        .toFixed(1)
+                     : null
 
     return (
       <div>
-        <p>Asked by {name}</p>
+        <h2>Asked by {name}</h2>
 
-        <p>Results:</p>
-        <p>{avatarURL}</p>
+        <div>
+          <img src={avatarURL} alt={`Avatar of ${name}`} className='tinyavatar'/>
+        </div>
+
+        <h2>Results:</h2>
         <ul>
-        <li>Would you rather {question.optionOne.text}?
-          <p>{percentOne}%</p>
-          <p>{question.optionOne.votes.length} out of {totalVotes} votes</p>
+        <li><strong>Would you rather {question.optionOne.text}?</strong>
+          <p>{question.optionOne.votes.length} out of {totalVotes} votes
+          (percentOne !== null) ? ({percentOne}%) : ''</p>
           <p>{answer === 'optionOne' ? 'Your vote' : ''}</p>
         </li>
 
-        <li>Would you rather {question.optionTwo.text}?
-          <p>{percentTwo}%</p>
+        {/*
+        <ProgressBar now={percentOne} label={`${percentOne}%`} />
+        */}
+
+        <li><strong>Would you rather {question.optionTwo.text}?</strong>
+          (percentTwo !== null) && <p>{percentTwo}%</p>
           <p>{question.optionTwo.votes.length} out of {totalVotes} votes</p>
           <p>{answer === 'optionTwo' ? 'Your vote' : ''}</p>
         </li>
+
+        {/*
+        <ProgressBar now={percentTwo} label={`${percentTwo}%`} />
+        */}
 
         </ul>
 
@@ -54,7 +70,10 @@ class QuestionPoll extends Component {
       <div className='container'>
         <h5>{name} asks</h5>
 
-        <p>{avatarURL}</p>
+        <div>
+          <img src={avatarURL} alt={`Avatar of ${name}`} className='tinyavatar'/>
+        </div>
+
         <h3>Would You Rather...</h3>
 
         <form className='new-question' onSubmit={this.handleSubmit}>
@@ -88,7 +107,7 @@ class QuestionPoll extends Component {
   }
 
   render() {
-    const { authedUser, id, answered, answer, name, avatarURL, question } = this.props
+    const { answered, answer, name, avatarURL, question } = this.props
 
     return (
       <div>

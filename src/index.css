@@ -102,6 +102,17 @@ a {
       padding: 10px;
     }
 
+    .signin {
+      max-width: 300px;
+      min-height: 150px;
+      margin: 0 auto;
+      padding: 10px;
+      vertical-align: middle;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+
 .center {
   text-align: center;
 }
@@ -145,13 +156,13 @@ a {
 
 .nav :tinyavatar {
         width: 5px;
-  /*border-radius: 25px;*/
+  border-radius: 2px;
         margin: 5px;
 }
 
 .tinyavatar {
         width: 30px;
-  /*border-radius: 25px;*/
+  border-radius: 15px;
         margin: 0px;
 }
 
@@ -197,24 +208,42 @@ li {
 }
 
 .avatar {
-  height: 50px;
+  /* height: 50px;
   border-radius: 25px;
-  margin: 10px;
+  margin: 10px; */
+  height: 80px;
+  border-radius: 40px;
+  margin: 20px;
 }
 
 .question {
-  width: 100%;
+  width: 70%;
   max-width: 590px;
   padding: 10px;
   display: flex;
   margin: 0 auto;
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
-  cursor: pointer;
+  /* border: 1px solid #dad7d7; */
+  border: 1px solid black;
+  /* border-radius: 3px; */
+  /* cursor: pointer; */
+      flex-direction: row;
+      background-color: #92a8d1;
+}
+
+.question-inner {
+  width: 60%;
+  max-width: 590px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+      border: 1px solid #dad7d7;
+      border-radius: 3px;
+      cursor: pointer;
+      padding-left: 20px;
 }
 
 .question-info {
-  width: 100%;
+  width: 60%;
   max-width: 590px;
   margin: 10px;
   display: flex;
@@ -324,4 +353,24 @@ li {
   margin-top: 10px;
   font-size: 20px;
   color: #C3392A;
+}
+
+/*
+  Progress-bar remedy from
+  https://medium.com/@ItsMeDannyZ/how-to-build-a-progress-bar-with-react-8c5e79731d1f
+*/
+
+.progress-bar {
+  position: relative;
+  height: 20px;
+  width: 350px;
+  border-radius: 590px;
+  border: 1px solid #333;
+}
+
+.filler {
+  background: #1DA598;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
 }

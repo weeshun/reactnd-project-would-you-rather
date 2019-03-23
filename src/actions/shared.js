@@ -15,11 +15,12 @@ export function handleInitialData () {
   return (dispatch) => {
     dispatch(showLoading())
 
+        // dispatch(setAuthedUser(AUTHED_ID))
     return getInitialData()
       .then(( { users, questions }) => {
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
-        dispatch(setAuthedUser(AUTHED_ID))
+
         dispatch(hideLoading())
       })
   }

@@ -33,12 +33,13 @@ class SignIn extends Component {
     //
     // <img src={users[id].avatarURL} className='verytinyavatar' />
     return (
-      <div>
+      <div className='center'>
         <h1>Welcome to the Would You Rather App</h1>
 
         <h3>Please sign in to continue</h3>
 
-        <h2>SIGN IN</h2>
+        <div className='signin'>
+        <h2>Sign In</h2>
 
         <select className='dashboard-list' onChange={this.handleChange}>
           <option value='select'>Select Your Account</option>
@@ -48,8 +49,16 @@ class SignIn extends Component {
             </option>
           ))}
         </select>
+        </div>
 
-        <h2>SIGN UP</h2>
+        <h2>Or</h2>
+
+        <div className='signin'>
+        <p>If you don't have an account...</p>
+        
+        <h2>Sign Up</h2>
+        </div>
+
       </div>
     )
   }
