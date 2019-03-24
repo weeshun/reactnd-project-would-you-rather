@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+// import SignUp from './SignUp'
 
 class SignIn extends Component {
   handleChange = (e) => {
@@ -19,19 +20,6 @@ class SignIn extends Component {
     const { users } = this.props
     const userIDs = Object.keys(users).sort()
 
-    console.log("*** SIGNIN ***")
-    console.log(this.props)
-    console.log("users: ", users)
-    console.log("userIDs: ", userIDs)
-    // const { userNames, avatarURLS } = this.props
-    // console.log("userNames: ", userNames)
-    // console.log("avatarURLS: ", avatarURLS)
-    // for (let i=0; i < userNames.length; i++) {
-    //   console.log(userNames[i])
-    // }
-    //{userNames.map((n) => (<option>{n}</option>)}
-    //
-    // <img src={users[id].avatarURL} className='verytinyavatar' />
     return (
       <div className='center'>
         <h1>Welcome to the Would You Rather App</h1>
@@ -51,13 +39,15 @@ class SignIn extends Component {
           </select>
         </div>
 
-        <h4>Or</h4>
+        {/*
+          <h4>Or</h4>
 
-        <div className='signin'>
-          <p>If you don't have an account...</p>
+          <div className='signin'>
+            <p>If you don't have an account...</p>
 
-          <Link to='/signup'>Sign Up</Link>
-        </div>
+            <h2>Sign Up</h2>
+          </div>
+        */}
 
       </div>
     )
@@ -68,6 +58,7 @@ function mapStateToProps ({ users }) {
   const userIDs = Object.keys(users).sort((a, b) => users[a].name - users[b].name)
   const userNames = userIDs.map((id) => users[id].name)
   const avatarURLs = userIDs.map((id) => users[id].avatar)
+
   // userNames,
   // avatarURLs
   return {

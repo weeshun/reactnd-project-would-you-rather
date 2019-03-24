@@ -15,10 +15,6 @@ import SignOut from './SignOut'
 import NoMatch from './NoMatch'
 // import logo from '../logo.svg';
 
-// function NoMatch() {
-//   return <h2>404: Page Not Found</h2>
-// }
-
 // class NoMatch extends Component {
 //   render() {
 //     return (
@@ -31,15 +27,15 @@ import NoMatch from './NoMatch'
 //   }
 // }
 
-function handleDashBoard (authedUser) {
-  // console.log("*** handleDashBoard ***")
-  // console.log('authedUser: ', authedUser)
-  // // console.log('this.props: ', this.props)
-  // console.log("*** handleDashBoard DONE ***")
-  return (
-    (authedUser !== '' && authedUser !== null) ? <Dashboard /> : ''
-  )
-}
+// function handleDashBoard (authedUser) {
+//   // console.log("*** handleDashBoard ***")
+//   // console.log('authedUser: ', authedUser)
+//   // // console.log('this.props: ', this.props)
+//   // console.log("*** handleDashBoard DONE ***")
+//   return (
+//     (authedUser !== '' && authedUser !== null) ? <Dashboard /> : ''
+//   )
+// }
 
 class App extends Component {
   //const { dispatch } = this.props
@@ -47,25 +43,7 @@ class App extends Component {
     (this.props.loading !== true) && this.props.dispatch(handleInitialData())
   }
 
-  signOut () {
-    console.log("*** signout ***")
-    handleUnsetAuthedUser()
-    return null
-  }
-
-  // <div className="container"> instead of <div className="App-header">
-
   render() {
-    {/*
-      <Nav name="John Doe" avatarURL='https://avatars.io/twitter/johndoe'/>
-    */}
-    console.log("*** APP ***")
-    console.log("authedUser: ", this.props.authedUser)
-
-    // <Route path='/signout' component={this.signOut} />
-    // ? <Route path='/signin' component={SignIn} />
-    // <Route path='/signin' component={SignIn} />
-
     // return (
     //   <BrowserRouter>
     //     <Fragment>
@@ -100,39 +78,6 @@ class App extends Component {
     //   </BrowserRouter>
     // );
 
-      // return (
-      //   <BrowserRouter>
-      //     <Fragment>
-      //       <LoadingBar />
-      //       {this.props.loading === true
-      //         ? null
-      //         : <div className="container">
-      //               <Nav
-      //                 name={this.props.authedUserName}
-      //                 avatarURL={this.props.authedUserAvatarURL}/>
-      //               <div>
-      //                 { /*
-      //                   <img src={logo} className="App-logo" alt="logo" />
-      //                   <Route path='/' exact component={Dashboard} />
-      //                   <Route path='/questions/:id' exact component={QuestionPoll} />
-      //                   <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
-      //                 */ }
-      //
-      //                   <Route path='/signin' exact component={SignIn} />
-      //                   <Route path='/' exact component={Dashboard} />
-      //                   <Route path='/questions/:id' exact component={QuestionPoll} />
-      //                   <Route path='/add' exact component={AddQuestion} />
-      //                   <Route path='/leaderboard' exact component={LeaderBoard} />
-      //                   <Route path='/signout' exact component={SignOut} />
-      //
-      //
-      //               </div>
-      //             </div>
-      //       }
-      //     </Fragment>
-      //   </BrowserRouter>
-      // );
-
       // ? <Route path='/signin' component={SignIn} />
       return (
         <BrowserRouter>
@@ -148,11 +93,7 @@ class App extends Component {
                       avatarURL={this.props.authedUserAvatarURL}/>
                     <div>
                       { /*
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <Route path='/' exact component={Dashboard} />
-                        <Route path='/questions/:id' exact component={QuestionPoll} />
                         <Route path='/' exact component={handleDashBoard(this.props.authedUser)} />
-
                         <Route path='/signup' exact component={SignUp} />
                       */ }
 
@@ -160,7 +101,6 @@ class App extends Component {
                         <Route path='/questions/:id' exact component={QuestionPoll} />
                         <Route path='/add' exact component={AddQuestion} />
                         <Route path='/leaderboard' exact component={LeaderBoard} />
-
                         <Route path='/signout' exact component={SignOut} />
 
 
@@ -173,12 +113,6 @@ class App extends Component {
 
   }
 }
-
-// function mapStateToProps ({ authedUser }) {
-//   return {
-//     loading: authedUser === null
-//   }
-// }
 
 function mapStateToProps ({ authedUser, users }) {
   let authedUserName = ''

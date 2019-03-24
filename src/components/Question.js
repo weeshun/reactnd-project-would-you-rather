@@ -35,16 +35,16 @@ class Question extends Component {
   }
 
   render() {
-    const { authedUser, user, question } = this.props  // Provided as a prop by connect() - see mapStateToProps
+    const { authedUser, user, question } = this.props
 
     if (question === null) {
       return <p>This Question doesn't exist</p>
     }
 
     const {
-      id, author, timestamp, optionOne, optionTwo  // id is now required
+      id, author, timestamp, optionOne, optionTwo
     } = question
-    //const answered = Object.keys(user.answers).includes(question.id)
+
     const answered =  question.optionOne.votes.includes(authedUser)
                    || question.optionTwo.votes.includes(authedUser)
     const buttonName = answered ? "VIEW POLL" : "VOTE"
@@ -53,24 +53,12 @@ class Question extends Component {
     return (
       <div className='question'>
         <div>
-        <h2 className='center'>{user.name} asks:</h2>
-        <img
-          src={user.avatarURL}
-          alt={`Avatar of ${user.name}`}
-          className='avatar'
-        />
-        {/*
-          <span>
-            <img
-              src={user.avatarURL}
-              alt={`Avatar of ${user.name}`}
-              className='avatar'
-            />
-          </spa
-        </div>
-        <div>
-        n>
-        */}
+          <h2 className='center'>{user.name} asks:</h2>
+          <img
+            src={user.avatarURL}
+            alt={`Avatar of ${user.name}`}
+            className='avatar'
+          />
         </div>
         <div>
           <h3>Would you rather</h3>
@@ -85,42 +73,13 @@ class Question extends Component {
   }
 }
 
-// <div className='question-info'>
-//   <div>
-//     <span>{user.name}</span>
-//     <div>{formatDate(timestamp)}</div>
-//     {parent && (
-//       <button className='replying-to' onClick={(e) => this.toParent(e, parent.id)}>
-//         Replying to @{parent.author}
-//       </button>
-//     )}
-//     <p>{text}</p>
-//   </div>
-//
-//   <div className='tweet-icons'>
-//     <TiArrowBackOutline className='tweet-icon' />
-//     <span>{replies !== 0 && replies}</span>
-//     <button className='heart-button' onClick={this.handleLike}>
-//       {hasLiked === true
-//         ? <TiHeartFullOutline color='#e0245e' className='tweet-icon' />
-//         : <TiHeartOutline className='tweet-icon' />}
-//     </button>
-//     <span>{likes !== 0 && likes}</span>
-//   </div>
-// </div>
-
 function mapStateToProps({authedUser, users, questions}, { id }) {
-  // id provided as a prop to Tweet component
   const question = questions[id]
   const user = users[question.author]
-  //const answered = Object.keys(users[authedUser].answers).includes(id)
 
   return {
     authedUser,
     user,
-    // question: question
-    //   ? formatQuestion(question, users[question.author], authedUser)
-    //   : null
     question
   }
 }

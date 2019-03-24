@@ -29,15 +29,17 @@ class LeaderBoard extends Component {
                     className='avatar'
                   />
                 </div>
+
                 <div>
                   <ul>
                   <li>Answered questions: {Object.keys(users[id].answers).length}</li>
                   <li>Created questions: {users[id].questions.length}</li>
                   </ul>
                 </div>
+
                 <div>
                   <h3>Score</h3>
-                  <p className='center'>{users[id].questions.length + Object.keys(users[id].answers).length}</p>
+                  <h3 className='center'>{users[id].questions.length + Object.keys(users[id].answers).length}</h3>
                 </div>
               </li>
             ))}

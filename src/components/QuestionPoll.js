@@ -157,8 +157,6 @@ class QuestionPoll extends Component {
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
   const { id } = props.match.params
-  // console.log("*** QuestionPOll mapStateToProps ***")
-  // console.log('id: ', id)
 
   let question = null
   let answered = null
