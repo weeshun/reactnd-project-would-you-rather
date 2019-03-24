@@ -1,10 +1,123 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This is the code for the final assessment project for Udacity's React & Redux course.
+This is to build a web application that lets  user play the "Would You Rather?" game.
+The game goes like this: A user is asked a question in the form: "Would you rather [option
+A] or [option B]?". Ansering "neigher or "both" is against the rules.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+In the app, users will be able to answer questions, see which questions they haven't answered,
+see how other people have voted, post questions, and see the ranking of users on the leaderboard.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+The `_DATA.js` file represents a fake database and methods that let you access the data.
+Each user should have an avatar, so you’ll need to add the path to each user’s avatar when a new
+user is added.
+
+Using the provided starter code, you'll build a React/Redux front end for the application.
+
+The person using the application can impersonate/logging in as an existing user. Information about
+the logged-in user (`authedUser`) is displayed on the web page. The application allows the user to
+log out and log back in.
+
+If someone tries to navigate anywhere by entering the address in the address bar, the user is asked
+to sign in and then the requested page is shown.
+
+Once the user logs in, the user should be able to goggle between his/her answered and unanswered
+polls on the home page, which is located at the root (`/`). The polls in both categories are
+arranged from the most recently created (top) to the least recently created (bottom).
+
+Each polling question should link to the details of that poll. The details of each poll should
+be available at `questions/:question_id`.
+
+When a poll is clicked on the home page (`/`), the webpage shows two options the user has to select.
+
+For answered polls, each of the two options contains the text of the option, number of people who
+voted for that option, and percentage of people who voted for that option. The option selected by
+the logged-in user is also marked.
+
+The application should show a 404 page if the user is trying to access a poll that does not exist.
+It should also display a navigation bar so that the user can easily navigate anywhere in the
+application.
+
+Upon voting in a poll, all of the information of an answered poll is displayed. Users can only vote
+once per poll. When the user comes back to the home page, the polling question should appear in the
+"Answered" column.
+
+A user can post own questions. The form for posting new polling questions is available at the `/add`
+route. Upon submitting the form, a new poll should be created, the user should be taken to the home
+page, and the new polling question appears in the correct category on the home page.
+
+The application has a leaderboard that's available at the `/leaderboard` route, which shows how many
+questions each user has asked and answered. Each entry shows the user's name, picutre and the number
+of questions the user asked and the number of questions that the user answered.
+
+
+## Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+
+
+## TL;DR
+
+To get started developing right away:
+
+* install all project dependencies with
+  ```bash
+  $ yarn install
+  ```
+* install react-router-dom package with `$ yarn add react-redux redux`
+* `$ yarn add redux-thunk`
+* `$ yarn add react-redux-loading`
+* install react-router-dom package with `$ yarn add react-router-dom`
+* start the development server with `$ yarn start`
+
+The app will be displayed at http://localhost:3000/
+
+## What You're Getting
+```bash
+├── .gitignore
+├── CONTRIBUTING.md
+├── README.md # This file.
+├── package-lock.json # npm package manager file. It's unlikely that you'll need to modify this.
+├── package.json # npm package manager file that lists the packages your project depends on.
+├── yarn.lock # yarn package manager file. It's unlikely that you'll need to modify this.
+├── public
+│   ├── favicon.ico # React Icon, You may change if you wish.
+│   └── index.html # DO NOT MODIFY
+│   └── manifest.json
+└── src
+    └── actions
+    │   ├── authedUser.js # action creator with authedUser
+    │   ├── questions.js # action creators with questions
+    │   ├── shared.js # action creators for data related to both authedUser, users, questions
+    │   └── users.js # action creators with users
+    └── components
+    │   ├── AddQuestion.js # Component to add a new question
+    │   ├── App.js # This is the root component for the app. Load the data from the fake server and sets routings for various components
+    │   ├── Dashboard.js # Displays Dashboard view for the root page (`/`)
+    │   ├── LeaderBoard.js # Displays ranking of users in creating and answering questions
+    │   ├── Nav.js # Navigation bar
+    │   ├── NoMatch.js # To be invoked when no matching page is found
+    │   ├── Question.js # Render a summary question item
+    │   ├── QuestionPoll.js # Displays a list of questions for a user to vote and check question poll
+    │   ├── SignIn.js # This is where a user signs in
+    │   └── SignOut.js # This is how signing out process is done
+    └── middleware
+    │   ├── index.js # Combined middleware (logger and thunk)
+    │   └── logger.js # Middleware for helpful console logging for debugging
+    └── reducers
+    │   ├── authedUser.js # reducer for operations with authedUser
+    │   ├── index.js # root reducer
+    │   ├── questions.js # reducer for operations with questions
+    │   └── users.js # reducer for operations with users
+    └── utils
+    │   ├── _DATA.js # A JavaScript API for the provided backend. Instructions for the methods are below.
+    │   ├── api.js # Wrapper functions for some functions in _DATA.js
+    │   └── helpers.js # Some helpful tools
+    ├── index.css # Global styles. Feel free to customize this as you desire.
+    ├── index.js # This is the root of your app. Displays the ShowBooks app for the root page (`/`), and the SearchBooks app for the `/search` URL
+    └── logo.svg # React logo
+
+```
 
 ## Data
 
@@ -94,17 +207,6 @@ Your code will talk to the database via 4 methods:
 | authedUser | String | The id of the user who answered the question|
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Run
-
-To run:
-
-- `$ yarn install`
-- `$ yarn add react-redux redux`
-- `$ yarn add redux-thunk`
-- `$ yarn add react-redux-loading`
-- `$ yarn add react-router-dom`
-- `$ yarn start`
 
 ## Contributing
 
