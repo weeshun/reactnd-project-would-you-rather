@@ -60,15 +60,30 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To get started developing right away:
 
-* install all project dependencies with
+* Install all project dependencies with
   ```bash
   $ yarn install
   ```
-* install react-router-dom package with `$ yarn add react-redux redux`
-* `$ yarn add redux-thunk`
-* `$ yarn add react-redux-loading`
-* install react-router-dom package with `$ yarn add react-router-dom`
-* start the development server with `$ yarn start`
+* Install react-redux and redux packages with
+  ```bash
+  $ yarn add react-redux redux
+  ```
+* Install redux-thunk package with
+  ```bash
+  $ yarn add redux-thunk
+  ```
+* Install react-redux-loading package with
+  ```bash
+  $ yarn add react-redux-loading
+  ```
+* Install react-router-dom package with
+  ```bash
+  $ yarn add react-router-dom
+  ```
+* start the development server with
+  ```bash
+  $ yarn start
+  ```
 
 The app will be displayed at http://localhost:3000/
 
