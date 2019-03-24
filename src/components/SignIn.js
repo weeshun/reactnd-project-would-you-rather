@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import { withRouter, Redirect, Link } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 // import SignUp from './SignUp'
@@ -13,7 +13,7 @@ class SignIn extends Component {
 
     this.props.dispatch(setAuthedUser(id))
 
-    this.props.history.push(`/`)
+    // this.props.history.push(`/`)
     //<Redirect to='/' />
   }
 
@@ -67,6 +67,6 @@ function mapStateToProps ({ users }) {
   }
 }
 
-// export default connect(mapStateToProps)(SignIn)
+export default connect(mapStateToProps)(SignIn)
 // export default connect()(SignIn)
-export default withRouter(connect(mapStateToProps)(SignIn))
+// export default withRouter(connect(mapStateToProps)(SignIn))

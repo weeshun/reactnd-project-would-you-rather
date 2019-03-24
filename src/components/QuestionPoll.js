@@ -28,7 +28,7 @@ class QuestionPoll extends Component {
 
   showAnswered (answer, name, avatarURL, question) {
     // Don't have to worry about the denotimator being zero here since you can
-    // only see this poll data at least one user (that is, you) has voted.
+    // only see this poll data when at least one user (that is, you) has voted.
 
     const totalVotes = question.optionOne.votes.length
                      + question.optionTwo.votes.length
