@@ -1,7 +1,7 @@
 import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
-import { setAuthedUser } from './authedUser'
+// import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export const ADD_QUESTION = 'ADD_QUESTION'
@@ -9,7 +9,7 @@ export const ANSWER_QUESTION = 'ANSWER_QUESTION'
 
 //const AUTHED_ID = 'johndoe'
 // const AUTHED_ID = 'tylermcginnis'
-const AUTHED_ID = ''
+// const AUTHED_ID = ''
 
 export function handleInitialData () {
   return (dispatch) => {

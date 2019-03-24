@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 import Question from './Question'
-import NoMatch from './NoMatch'
+// import NoMatch from './NoMatch'
 
 class Dashboard extends Component {
   state = {

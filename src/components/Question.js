@@ -4,7 +4,7 @@ import { getShorterStr } from '../utils/helpers'
 //import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti'
 import { withRouter } from 'react-router-dom'
   // import { Redirect } from 'react-router-dom'
-import QuestionPoll from './QuestionPoll.js'
+// import QuestionPoll from './QuestionPoll.js'
 
 class Question extends Component {
   // state = {
@@ -42,7 +42,7 @@ class Question extends Component {
     }
 
     const {
-      id, author, timestamp, optionOne, optionTwo
+      id
     } = question
 
     const answered =  question.optionOne.votes.includes(authedUser)

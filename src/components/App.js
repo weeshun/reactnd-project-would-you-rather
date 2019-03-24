@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+// import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import { handleUnsetAuthedUser } from '../actions/authedUser'
+// import { handleUnsetAuthedUser } from '../actions/authedUser'
 import Dashboard from './Dashboard'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
@@ -12,7 +13,7 @@ import LeaderBoard from './LeaderBoard'
 import SignIn from './SignIn'
 // import SignUp from './SignUp'
 import SignOut from './SignOut'
-import NoMatch from './NoMatch'
+// import NoMatch from './NoMatch'
 // import logo from '../logo.svg';
 
 // class NoMatch extends Component {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect, Link } from 'react-router-dom'
+// import { withRouter, Redirect, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 // import SignUp from './SignUp'
@@ -55,9 +56,9 @@ class SignIn extends Component {
 }
 
 function mapStateToProps ({ users }) {
-  const userIDs = Object.keys(users).sort((a, b) => users[a].name - users[b].name)
-  const userNames = userIDs.map((id) => users[id].name)
-  const avatarURLs = userIDs.map((id) => users[id].avatar)
+  // const userIDs = Object.keys(users).sort((a, b) => users[a].name - users[b].name)
+  // const userNames = userIDs.map((id) => users[id].name)
+  // const avatarURLs = userIDs.map((id) => users[id].avatar)
 
   // userNames,
   // avatarURLs
