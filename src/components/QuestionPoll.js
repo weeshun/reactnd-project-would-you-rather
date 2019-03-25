@@ -127,6 +127,11 @@ class QuestionPoll extends Component {
         <div>
           <h2>Sign in first</h2>
           <NoMatch />
+          {/*
+          <h2>No Match</h2>
+
+          */}
+
         </div>
       )
 
@@ -134,6 +139,10 @@ class QuestionPoll extends Component {
 
       return (
         <div>
+        {/*
+        <NoMatch />
+        <h2>No Match</h2>
+        */}
         <NoMatch />
         </div>
       )
@@ -171,6 +180,10 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
     name = users[questions[id].author].name
     avatarURL = users[questions[id].author].avatarURL
   }
+
+  console.log("*** QuestionPoll ***")
+  console.log('id: ', id)
+  console.log('question: ', question)
 
   return {
     authedUser,
