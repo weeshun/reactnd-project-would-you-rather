@@ -175,10 +175,12 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
 
   if (Object.keys(questions).includes(id)) {
     question = questions[id]
-    answered = Object.keys(users[authedUser].answers).includes(id)
-    answer = (answered) ? users[authedUser].answers[id] : null
     name = users[questions[id].author].name
     avatarURL = users[questions[id].author].avatarURL
+    if (authedUser !== null && authedUser !== '' && Object.keys(users).includes(authedUser)) {
+      answered = Object.keys(users[authedUser].answers).includes(id)
+      answer = (answered) ? users[authedUser].answers[id] : null
+    }
   }
 
   console.log("*** QuestionPoll ***")

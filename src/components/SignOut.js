@@ -12,11 +12,12 @@ class SignOut extends Component {
     // this.props.history.push('/')
   }
 
+  // return <Redirect to='/signin' />
   render() {
     // return null
     // return <Redirect to='/' />
     // return <Redirect to='/signin' />
-    return <Redirect to='/signin' />
+    return <Redirect to='/' />
   }
 }
 

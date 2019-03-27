@@ -7,6 +7,9 @@ export default function Nav ({name, avatarURL}) {
   // console.log("name: ", name)
   // console.log("avatarURL: ", avatarURL)
   return (
+    (name === '')
+    ? null
+    :
     <nav className='nav'>
       <ul>
         <li>

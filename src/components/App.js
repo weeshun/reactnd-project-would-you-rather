@@ -10,7 +10,7 @@ import Nav from './Nav'
 import QuestionPoll from './QuestionPoll'
 import AddQuestion from './AddQuestion'
 import LeaderBoard from './LeaderBoard'
-import SignIn from './SignIn'
+// import SignIn from './SignIn'
 // import SignUp from './SignUp'
 import SignOut from './SignOut'
 import NoMatch from './NoMatch'
@@ -92,14 +92,18 @@ class App extends Component {
       // <Route path='/add' exact render={() => <AddQuestion />} />
       // <Route path='/leaderboard' exact render={() => <LeaderBoard />} />
       // <Route path='/signout' exact render={() => <SignOut />} />
+      //
+      // <Route path='/questions/:id' render={() => <QuestionPoll match={{params: {id}}}/>} />
+      {/*
+        : (this.props.authedUser === '' || this.props.authedUser === null)
+          ? <Route path='/signin' exact render={() => <SignIn />} />
+      */}
       return (
         <BrowserRouter>
           <Fragment>
             <LoadingBar />
             {this.props.loading === true
               ? null
-              : (this.props.authedUser === '' || this.props.authedUser === null)
-                ? <SignIn />
                 : <div className="container">
                     <Nav
                       name={this.props.authedUserName}
@@ -110,12 +114,12 @@ class App extends Component {
                         <Route path='/signup' exact component={SignUp} />
                       */ }
                         <Switch>
-                        <Route path='/' exact component={Dashboard} />
-                        <Route path='/questions/:id' exact component={QuestionPoll} />
-                        <Route path='/add' exact component={AddQuestion} />
-                        <Route path='/leaderboard' exact component={LeaderBoard} />
-                        <Route path='/signout' exact component={SignOut} />
-                        <Route component={NoMatch} />
+                        <Route path='/' exact render={() => <Dashboard />} />
+                        <Route path='/questions/:id' component={QuestionPoll} />
+                        <Route path='/add' component={AddQuestion} />
+                        <Route path='/leaderboard' component={LeaderBoard} />
+                        <Route path='/signout' component={SignOut} />
+                        <Route render={() => <NoMatch />} />
                         </Switch>
                     </div>
                   </div>

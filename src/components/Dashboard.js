@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { Redirect } from 'react-router-dom'
+import SignIn from './SignIn'
 import Question from './Question'
 // import NoMatch from './NoMatch'
 
@@ -19,20 +20,26 @@ class Dashboard extends Component {
 
   render() {
     // if (this.props.authedUser === '' || this.props.authedUser === null) {
+    //   //
+    //   //   return (
+    //   //     <div>
+    //   //       <Redirect to='/signin' />
+    //   //     </div>
+    //   //   )
+    //   //
     //
     //   return (
-    //     <div>
-    //       <Redirect to='/signin' />
-    //     </div>
+    //     <SignIn />
     //   )
-    //
     // } else {
 
       const selectedQuestions = this.state.showAnswered
                               ? this.props.answered
                               : this.props.unanswered
-
       return (
+        (this.props.authedUser === '' || this.props.authedUser === null)
+        ? <SignIn />
+        :
         <div className='center'>
           <div className='tab'>
             <button type='button'
@@ -70,6 +77,7 @@ function mapStateToProps ({ authedUser, users, questions }) {
   let answered = {}
   let unanswered = {}
 
+  if (authedUser !== null && authedUser !== '') {
   if (typeof users[authedUser] !== 'undefined') {
 
     const answeredIDs = Object.keys(users[authedUser].answers)
@@ -81,6 +89,7 @@ function mapStateToProps ({ authedUser, users, questions }) {
     answeredIDs.forEach((id) => (answered[id] = questions[id]))
     unansweredIDs.forEach((id) => (unanswered[id] = questions[id]))
 
+  }
   }
 
   return {

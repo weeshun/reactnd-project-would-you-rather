@@ -18,8 +18,14 @@ class SignIn extends Component {
   }
 
   render() {
-    const { users } = this.props
+    const { authedUser, users } = this.props
     const userIDs = Object.keys(users).sort()
+       console.log("*** SIGNIN ***")
+       console.log('authedUser: ', authedUser)
+       const a1 = authedUser === null
+       const a2 = authedUser === ''
+       console.log('authedUser is null: ', a1)
+       console.log("authedUser is '': ", a2)
 
     return (
       <div className='center'>
@@ -55,7 +61,7 @@ class SignIn extends Component {
   }
 }
 
-function mapStateToProps ({ users }) {
+function mapStateToProps ({ authedUser, users }) {
   // const userIDs = Object.keys(users).sort((a, b) => users[a].name - users[b].name)
   // const userNames = userIDs.map((id) => users[id].name)
   // const avatarURLs = userIDs.map((id) => users[id].avatar)
@@ -63,6 +69,7 @@ function mapStateToProps ({ users }) {
   // userNames,
   // avatarURLs
   return {
+    authedUser,
     users
   }
 }
