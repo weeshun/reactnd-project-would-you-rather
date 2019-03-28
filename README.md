@@ -56,9 +56,9 @@ of questions the user asked and the number of questions that the user answered.
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 
-## TL;DR
+## Installing and Launching the Application
 
-To get started developing right away:
+After cloning the git repo to your local machine, install the required yarn packages.
 
 * Install all project dependencies with
   ```bash
@@ -80,7 +80,9 @@ To get started developing right away:
   ```bash
   $ yarn add react-router-dom
   ```
-* start the development server with
+
+Then, launch the application with:
+
   ```bash
   $ yarn start
   ```
