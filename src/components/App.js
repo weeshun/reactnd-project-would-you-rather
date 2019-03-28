@@ -29,12 +29,12 @@ class App extends Component {
                       name={this.props.authedUserName}
                       avatarURL={this.props.authedUserAvatarURL}/>
                     <Switch>
-                      <Route path='/' exact render={() => <Dashboard />} />
+                      <Route path='/' exact component={Dashboard} />
                       <Route path='/questions/:id' component={QuestionPoll} />
                       <Route path='/add' component={AddQuestion} />
                       <Route path='/leaderboard' component={LeaderBoard} />
                       <Route path='/signout' component={SignOut} />
-                      <Route render={() => <NoMatch />} />
+                      <Route render={NoMatch} />
                     </Switch>
                   </div>
             }

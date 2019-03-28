@@ -13,9 +13,3 @@ export function unsetAuthedUser () {
     type: UNSET_AUTHED_USER
   }
 }
-
-export function handleUnsetAuthedUser () {
-  return (dispatch) => {
-    dispatch(unsetAuthedUser())
-  }
-}
