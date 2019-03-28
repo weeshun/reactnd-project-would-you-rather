@@ -121,46 +121,15 @@ class QuestionPoll extends Component {
   }
 
   render() {
-    if (this.props.authedUser === '' || this.props.authedUser === null) {
+    const { authedUser, answered, answer, name, avatarURL, question } = this.props
 
-      return (
-        <div>
-          <h2>Sign in first</h2>
-          <NoMatch />
-          {/*
-          <h2>No Match</h2>
-
-          */}
-
-        </div>
-      )
-
-    } else if (this.props.question === null) {
-
-      return (
-        <div>
-        {/*
-        <NoMatch />
-        <h2>No Match</h2>
-        */}
-        <NoMatch />
-        </div>
-      )
-
-    } else {
-
-      const { answered, answer, name, avatarURL, question } = this.props
-
-      return (
-        <div>
-        {answered
+    return (
+      (authedUser === '' || authedUser === null || question === null)
+      ? <NoMatch />
+      : answered
         ? this.showAnswered(answer, name, avatarURL, question)
         : this.showUnanswered(name, avatarURL, question)
-        }
-        </div>
-      )
-
-    }
+    )
   }
 }
 
@@ -183,9 +152,9 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
     }
   }
 
-  console.log("*** QuestionPoll ***")
-  console.log('id: ', id)
-  console.log('question: ', question)
+  // console.log("*** QuestionPoll ***")
+  // console.log('id: ', id)
+  // console.log('question: ', question)
 
   return {
     authedUser,

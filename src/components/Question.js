@@ -1,37 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getShorterStr } from '../utils/helpers'
-//import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti'
 import { withRouter } from 'react-router-dom'
-  // import { Redirect } from 'react-router-dom'
-// import QuestionPoll from './QuestionPoll.js'
 
 class Question extends Component {
-  // state = {
-  //   showUnanswered: true
-  // }
-
-  /*
-  handleLike = (e) => {
-    e.preventDefault()
-
-    const { dispatch, tweet, authedUser } = this.props
-
-    dispatch(handleToggleTweet({
-      id: tweet.id,
-      hasLiked: tweet.hasLiked,
-      authedUser
-    }))
-  }
-  */
-
   showInfo = (e, id) => {
     e.preventDefault()
-
     this.props.history.push(`/questions/${id}`)
-    //<Redirect to="/questions/{id}" />
-    // <Redirect to=`/questions/${id}` />
-    //<QuestionPoll id={id}/>
   }
 
   render() {
@@ -41,9 +16,7 @@ class Question extends Component {
       return <p>This Question doesn't exist</p>
     }
 
-    const {
-      id
-    } = question
+    const { id } = question
 
     const answered =  question.optionOne.votes.includes(authedUser)
                    || question.optionTwo.votes.includes(authedUser)

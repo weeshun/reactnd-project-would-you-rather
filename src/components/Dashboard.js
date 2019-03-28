@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { Redirect } from 'react-router-dom'
 import SignIn from './SignIn'
 import Question from './Question'
-// import NoMatch from './NoMatch'
 
 class Dashboard extends Component {
   state = {
@@ -19,28 +17,14 @@ class Dashboard extends Component {
   }
 
   render() {
-    // if (this.props.authedUser === '' || this.props.authedUser === null) {
-    //   //
-    //   //   return (
-    //   //     <div>
-    //   //       <Redirect to='/signin' />
-    //   //     </div>
-    //   //   )
-    //   //
-    //
-    //   return (
-    //     <SignIn />
-    //   )
-    // } else {
+    const selectedQuestions = this.state.showAnswered
+                            ? this.props.answered
+                            : this.props.unanswered
 
-      const selectedQuestions = this.state.showAnswered
-                              ? this.props.answered
-                              : this.props.unanswered
-      return (
-        (this.props.authedUser === '' || this.props.authedUser === null)
-        ? <SignIn />
-        :
-        <div className='center'>
+    return (
+      (this.props.authedUser === '' || this.props.authedUser === null)
+      ? <SignIn />
+      : <div className='center'>
           <div className='tab'>
             <button type='button'
               value='unanswered'
@@ -67,9 +51,7 @@ class Dashboard extends Component {
             ))}
           </ul>
         </div>
-      )
-
-    // }
+    )
   }
 }
 
@@ -78,18 +60,16 @@ function mapStateToProps ({ authedUser, users, questions }) {
   let unanswered = {}
 
   if (authedUser !== null && authedUser !== '') {
-  if (typeof users[authedUser] !== 'undefined') {
+    if (typeof users[authedUser] !== 'undefined') {
+      const answeredIDs = Object.keys(users[authedUser].answers)
+        .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+      const unansweredIDs = Object.keys(questions)
+        .filter((id) => !answeredIDs.includes(id))
+        .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
 
-    const answeredIDs = Object.keys(users[authedUser].answers)
-      .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-    const unansweredIDs = Object.keys(questions)
-      .filter((id) => !answeredIDs.includes(id))
-      .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-
-    answeredIDs.forEach((id) => (answered[id] = questions[id]))
-    unansweredIDs.forEach((id) => (unanswered[id] = questions[id]))
-
-  }
+      answeredIDs.forEach((id) => (answered[id] = questions[id]))
+      unansweredIDs.forEach((id) => (unanswered[id] = questions[id]))
+    }
   }
 
   return {

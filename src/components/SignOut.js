@@ -6,17 +6,12 @@ import { unsetAuthedUser } from '../actions/authedUser'
 
 class SignOut extends Component {
   componentDidMount() {
-    // console.log("*** Mounting SignOut ***")
     this.props.dispatch(unsetAuthedUser())
     // this.props.history.push('/signin')
     // this.props.history.push('/')
   }
 
-  // return <Redirect to='/signin' />
   render() {
-    // return null
-    // return <Redirect to='/' />
-    // return <Redirect to='/signin' />
     return <Redirect to='/' />
   }
 }

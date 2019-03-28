@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { withRouter, Redirect, Link } from 'react-router-dom'
 // import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
@@ -9,23 +8,14 @@ class SignIn extends Component {
   handleChange = (e) => {
     e.preventDefault()
     const id = e.target.value
-    console.log("selected user: ", id)
+    // console.log("selected user: ", id)
 
     this.props.dispatch(setAuthedUser(id))
-
-    // this.props.history.push(`/`)
-    //<Redirect to='/' />
   }
 
   render() {
-    const { authedUser, users } = this.props
+    const { users } = this.props
     const userIDs = Object.keys(users).sort()
-       console.log("*** SIGNIN ***")
-       console.log('authedUser: ', authedUser)
-       const a1 = authedUser === null
-       const a2 = authedUser === ''
-       console.log('authedUser is null: ', a1)
-       console.log("authedUser is '': ", a2)
 
     return (
       <div className='center'>
@@ -61,15 +51,8 @@ class SignIn extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser, users }) {
-  // const userIDs = Object.keys(users).sort((a, b) => users[a].name - users[b].name)
-  // const userNames = userIDs.map((id) => users[id].name)
-  // const avatarURLs = userIDs.map((id) => users[id].avatar)
-
-  // userNames,
-  // avatarURLs
+function mapStateToProps ({ users }) {
   return {
-    authedUser,
     users
   }
 }

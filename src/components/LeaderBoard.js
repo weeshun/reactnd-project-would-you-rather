@@ -4,20 +4,12 @@ import NoMatch from './NoMatch'
 
 class LeaderBoard extends Component {
   render() {
-    if (this.props.authedUser === '' || this.props.authedUser === null) {
+    const { users, sortedKeys, authedUser } = this.props
 
-      return (
-        <div>
-          <h2>Sign in first</h2>
-          <NoMatch />
-        </div>
-      )
-
-    } else {
-
-      const { users, sortedKeys } = this.props
-      return (
-        <div>
+    return (
+      (authedUser === '' || authedUser === null)
+      ? <NoMatch />
+      : <div>
           <ul className='leader-board'>
             {sortedKeys.map((id) => (
               <li key={id}>
@@ -45,9 +37,8 @@ class LeaderBoard extends Component {
             ))}
           </ul>
         </div>
-      )
+    )
 
-    }
   }
 }
 
