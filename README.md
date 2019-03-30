@@ -64,19 +64,19 @@ After cloning the git repo to your local machine, install the required yarn pack
   ```bash
   $ yarn install
   ```
-* Install react-redux and redux packages with
+* Install the `react-redux` and `redux` packages with
   ```bash
   $ yarn add react-redux redux
   ```
-* Install redux-thunk package with
+* Install the `redux-thunk` package with
   ```bash
   $ yarn add redux-thunk
   ```
-* Install react-redux-loading package with
+* Install the `react-redux-loading` package with
   ```bash
   $ yarn add react-redux-loading
   ```
-* Install react-router-dom package with
+* Install the `react-router-dom` package with
   ```bash
   $ yarn add react-router-dom
   ```

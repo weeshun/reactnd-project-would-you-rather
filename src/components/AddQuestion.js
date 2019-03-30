@@ -40,6 +40,8 @@ class AddQuestion extends Component {
 
   render() {
     const { optionOneText, optionTwoText, toHome } = this.state
+    // console.log("*** ADDQUESTION ***")
+    // console.log('this.props.authedUser: ', this.props.authedUser)
 
     return (
       (this.props.authedUser === '' || this.props.authedUser === null)
